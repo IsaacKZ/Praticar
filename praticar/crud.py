@@ -8,7 +8,6 @@ def ver_notas():
     print('\n-- NOTAS --')
     for i in range(len(aluno_notas)):
         print(f'{i+1}° - {aluno_notas[i]}')
-    menu()
 
 def adicionar_nota():
     nota = int(input("Adicione uma nova nota: "))
@@ -28,37 +27,45 @@ def adicionar_nota():
         return adicionar_nota()
 
 def atualizar_nota():
-    escolha = int(input(f"Escolha uma nota para atualizar: \n {ver_notas()}"))
-    for i in range(len(aluno_notas)):
-        print()
-        if escolha == aluno_notas[escolha]:
-            aluno_notas[escolha] = int(input("Digite a nova nota: "))
-            print("Nota atualizada caraio!!!")
+    ver_notas()
+    escolha = int(input(f"Escolha uma nota para atualizar: \n"))
+    aluno_notas[escolha - 1] = int(input("Digite a nova nota: "))
+    print("Nota atualizada caraio!!!")
     menu()
 
+def excluir_nota():
+    ver_notas()
+    escolha = int(input(f"Escolha uma nota para excluir: \n"))
+    aluno_notas.pop(escolha - 1)
+
 def menu():
-    print('\n--- MENU ---')
-    try:
-        print('1 - Ver notas')
-        print('2 - Adicionar nota')
-        print('3 - Atualizar nota')
-        print('4 - Encerrar')
-        escolha = int(input('Escolha uma opção (número): '))
+    while True:
+        print('\n--- MENU ---')
+        try:
+            print('1 - Ver notas')
+            print('2 - Adicionar nota')
+            print('3 - Atualizar nota')
+            print('4 - Excluir nota')
+            print('5 - Encerrar')
+            escolha = int(input('Escolha uma opção (número): '))
 
-        if escolha == 1:
-            ver_notas()
+            if escolha == 1:
+                ver_notas()
 
-        elif escolha == 2:
-            adicionar_nota()
+            elif escolha == 2:
+                adicionar_nota()
 
-        elif escolha == 3:
-            atualizar_nota()
+            elif escolha == 3:
+                atualizar_nota()
 
-        elif escolha == 4:
-            return
+            elif escolha == 4:
+                excluir_nota()
 
-    except ValueError:
-        print('Opção inválida!')
-        return menu()
+            elif escolha == 5:
+                return
+
+        except ValueError:
+            print('Opção inválida!')
+            return menu()
 
 menu()
