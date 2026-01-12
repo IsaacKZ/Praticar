@@ -4,7 +4,7 @@ tentarei fazer um gerenciamento de notas de um aluno, depois avançarei para uma
 """
 aluno_notas = []
 
-def ver_notas():
+def ver_notas(): # mostra as notas
     print('\n-- NOTAS --')
     for i in range(len(aluno_notas)):
         print(f'{i+1}° - {aluno_notas[i]}')
@@ -12,7 +12,7 @@ def ver_notas():
 def adicionar_nota():
     nota = int(input("Adicione uma nova nota: "))
     if 0 <= nota <= 10: # se a nota for válida prossegue
-        aluno_notas.append(nota)
+        aluno_notas.append(nota) # add nota na lista
         print("Nota adicionada com sucesso!")
         print("O que deseja fazer agora?")
         print("1 - Adicionar outra nota")
@@ -29,14 +29,14 @@ def adicionar_nota():
 def atualizar_nota():
     ver_notas()
     escolha = int(input(f"Escolha uma nota para atualizar: \n"))
-    aluno_notas[escolha - 1] = int(input("Digite a nova nota: "))
+    aluno_notas[escolha - 1] = int(input("Digite a nova nota: ")) # -1 pois index de python começa em 0
     print("Nota atualizada caraio!!!")
     menu()
 
 def excluir_nota():
     ver_notas()
     escolha = int(input(f"Escolha uma nota para excluir: \n"))
-    aluno_notas.pop(escolha - 1)
+    aluno_notas.pop(escolha - 1) # -1 pois index de python começa em 0
 
 def menu():
     while True:
