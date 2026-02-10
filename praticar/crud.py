@@ -2,6 +2,7 @@
 arquivo python pra eu tentar fazer crud sozinho (sem inteligencia artificial)
 tentarei fazer um gerenciamento de notas de um aluno, depois avançarei para uma turma.
 """
+
 aluno_notas = []
 
 def ver_notas(): # mostra as notas
@@ -14,6 +15,7 @@ def adicionar_nota():
     if 0 <= nota <= 10: # se a nota for válida prossegue
         aluno_notas.append(nota) # add nota na lista
         print("Nota adicionada com sucesso!")
+
         print("O que deseja fazer agora?")
         print("1 - Adicionar outra nota")
         print("2 - Voltar ao menu")
@@ -63,10 +65,12 @@ def menu():
                 excluir_nota()
 
             elif escolha == 5:
-                return
+                break
 
+            elif escolha < 0 or (escolha > 5):
+                print("Opção inválida!")
+    
         except ValueError:
             print('Opção inválida!')
-            return menu()
 
 menu()
