@@ -10,7 +10,7 @@ def ver_notas(): # mostra as notas
         print(f'{i+1}° - {aluno_notas[i]}')
 
 def adicionar_nota():
-    nota = int(input("Adicione uma nova nota: "))
+    nota = float(input("Adicione uma nova nota: "))
     if 0 <= nota <= 10: # se a nota for válida prossegue
         aluno_notas.append(nota) # add nota na lista
         print("Nota adicionada com sucesso!")
@@ -29,14 +29,15 @@ def adicionar_nota():
 def atualizar_nota():
     ver_notas()
     escolha = int(input(f"Escolha uma nota para atualizar: \n"))
-    aluno_notas[escolha - 1] = int(input("Digite a nova nota: ")) # -1 pois index de python começa em 0
-    print("Nota atualizada caraio!!!")
+    aluno_notas[escolha - 1] = float(input("Digite a nova nota: ")) # -1 pois index de python começa em 0
+    print("Nota atualizada!")
     menu()
 
 def excluir_nota():
     ver_notas()
     escolha = int(input(f"Escolha uma nota para excluir: \n"))
     aluno_notas.pop(escolha - 1) # -1 pois index de python começa em 0
+    menu()
 
 def menu():
     while True:
