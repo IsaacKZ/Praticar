@@ -2,91 +2,59 @@
 
 import random
 
-
-
 dados = {
 
         0: """
-
 ┌─────────┐
-
 │         │
-
 │    o    │
-
 │         │
-
 └─────────┘
 """
 ,      
         1: """
-
 ┌─────────┐
-
 │ o       │
-
 │         │
-
 │       o │
-
 └─────────┘
 """
 ,
         2: """
-
 ┌─────────┐
-
 │ o       │
-
 │    o    │
-
 │       o │
-
 └─────────┘
 """
 ,
         3: """
-
 ┌─────────┐
-
 │ o     o │
-
 │         │
-
 │ o     o │
-
 └─────────┘
 """
 ,
         4: """
-
 ┌─────────┐
-
 │ o     o │
-
 │    o    │
-
 │ o     o │
-
 └─────────┘
 """
 ,
         5: """
-
 ┌─────────┐
-
 │ o     o │
-
 │ o     o │
-
 │ o     o │
-
 └─────────┘
 """
 
 }
 
-escolha = int(input("Escolha o número de vezes que deseja rolar os dados: \n"))
+escolha = int(input("Escolha o número de vezes que deseja rolar os dados: "))
 
 for i in range(escolha):
 
