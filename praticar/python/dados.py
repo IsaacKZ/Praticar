@@ -57,5 +57,4 @@ dados = {
 escolha = int(input("Escolha o número de vezes que deseja rolar os dados: "))
 
 for i in range(escolha):
-
     print (dados[random.randint(0, 5)])

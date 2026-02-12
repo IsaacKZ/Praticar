@@ -15,4 +15,3 @@ katy = Animal(porte = "Pequeno", raca = "Vira lata", cor = "Preto")
 jorge = Animal(porte = "Grande", raca = "Golden Retriever", cor = "Dourado esbranquiçado")
 
 mostrar_info(jorge)
-katy.mostrar_info()
