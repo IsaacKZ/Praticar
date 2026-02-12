@@ -18,11 +18,10 @@ def ver_turma(): # mostra as notas
         for i in range(len(turma)):
             print(f'{i+1}° - {turma[i]}')
     else:
-        print("Nenhuma nota existente!")
+        print("\nNenhuma nota existente!")
 
 def adicionar_nota():
     try:
-        print(f"DEBUG: Tamanho da turma = {len(turma)}")  # adiciona essa linha
         if len(turma) == 0:
             print("Ops! Não há nenhum aluno!")
             return
@@ -42,11 +41,15 @@ def adicionar_nota():
 def atualizar_nota():
     ver_turma()
     try:
-        escolha = int(input(f"Escolha uma nota para atualizar: \n"))
-        nova_nota = float(input("Digite a nova nota: ")) # -1 pois index de python começa em 0
-        if nova_nota >= 0 and nova_nota <= 10:
-            aluno_notas[escolha - 1] = nova_nota
-        print("Nota atualizada! \n") 
+        if len(turma) >= 1:
+            ver_turma()
+            aluno_escolhido = int(input("Escolha o aluno que quer atualizar uma nota: "))
+            escolha = int(input(f"Escolha uma nota para atualizar: \n"))
+            nova_nota = float(input("Digite a nova nota: "))
+            if nova_nota >= 0 and nova_nota <= 10:
+                nota = turma[aluno_escolhido]["notas"]
+                nota[escolha - 1] = nova_nota
+            print("Nota atualizada! \n") 
     except ValueError:
         print("Valor inválido!")
     except IndexError:
@@ -55,9 +58,13 @@ def atualizar_nota():
 def excluir_nota():
     ver_turma()
     try:
+        aluno_escolhido = int(input("Escolha o aluno que quer atualizar uma nota: "))
+        print("Notas do aluno " , turma[aluno_escolhido])
+        print(turma[aluno_escolhido]["notas"])
         escolha = int(input(f"Escolha uma nota para excluir: \n"))
-        print(f"Nota {aluno_notas[escolha - 1]} excluída! \n")
-        aluno_notas.pop(escolha - 1) # -1 pois index de python começa em 0
+        notas = turma[aluno_escolhido]["notas"]
+        notas.pop(escolha - 1) # -1 pois index de python começa em 0
+        print(f"Nota excluída! \n")
     except ValueError:
         print("Valor inválido!")
     except IndexError:
