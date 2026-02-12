@@ -4,28 +4,43 @@ tentarei fazer um gerenciamento de notas de um aluno, depois avançarei para uma
 """
 
 aluno_notas = []
+turma = []
 
-def ver_notas(): # mostra as notas
-    if len(aluno_notas) > 0:
+def add_aluno():
+    aluno = {}
+    aluno["notas"] = []
+    aluno["nome"] = input("Digite o nome do novo aluno: ")
+    turma.append(aluno)
+
+def ver_turma(): # mostra as notas
+    if len(turma) > 0:
         print('\n-- NOTAS --')
-        for i in range(len(aluno_notas)):
-            print(f'{i+1}° - {aluno_notas[i]}')
+        for i in range(len(turma)):
+            print(f'{i+1}° - {turma[i]}')
     else:
         print("Nenhuma nota existente!")
 
 def adicionar_nota():
     try:
-        nota = float(input("Adicione uma nova nota: "))
-        if 0 <= nota <= 10: # se a nota for válida prossegue
-            aluno_notas.append(nota) # add nota na lista
-            print("Nota adicionada com sucesso!")
-        else:
-            print('nota inválida! tente novamente')
+        print(f"DEBUG: Tamanho da turma = {len(turma)}")  # adiciona essa linha
+        if len(turma) == 0:
+            print("Ops! Não há nenhum aluno!")
+            return
+        elif len(turma) >= 1:
+            ver_turma()
+            aluno_escolhido = int(input("Escolha o aluno que quer adicionar uma nota: "))
+            nota = float(input("Adicione uma nova nota: "))
+            if 0 <= nota <= 10: # se a nota for válida prossegue
+                notas = turma[aluno_escolhido]["notas"]
+                notas.append(nota) # add nota na lista
+                print("Nota adicionada com sucesso!")
+            else:
+                print('nota inválida! tente novamente')
     except ValueError:
         print("Valor inválido!")
 
 def atualizar_nota():
-    ver_notas()
+    ver_turma()
     try:
         escolha = int(input(f"Escolha uma nota para atualizar: \n"))
         nova_nota = float(input("Digite a nova nota: ")) # -1 pois index de python começa em 0
@@ -38,7 +53,7 @@ def atualizar_nota():
         print("Nota inexistente!")
 
 def excluir_nota():
-    ver_notas()
+    ver_turma()
     try:
         escolha = int(input(f"Escolha uma nota para excluir: \n"))
         print(f"Nota {aluno_notas[escolha - 1]} excluída! \n")
@@ -60,7 +75,7 @@ def menu():
             escolha = int(input('Escolha uma opção (número): '))
 
             if escolha == 1:
-                ver_notas()
+                ver_turma()
 
             elif escolha == 2:
                 adicionar_nota()
@@ -79,3 +94,5 @@ def menu():
     
         except ValueError:
             print('Opção inválida!')
+
+menu()
