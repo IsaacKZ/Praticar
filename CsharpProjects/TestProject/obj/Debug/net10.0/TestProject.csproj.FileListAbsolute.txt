@@ -1,0 +1,15 @@
+C:\Users\isaac\Praticar\CsharpProjects\TestProject\bin\Debug\net10.0\TestProject.exe
+C:\Users\isaac\Praticar\CsharpProjects\TestProject\bin\Debug\net10.0\TestProject.deps.json
+C:\Users\isaac\Praticar\CsharpProjects\TestProject\bin\Debug\net10.0\TestProject.runtimeconfig.json
+C:\Users\isaac\Praticar\CsharpProjects\TestProject\bin\Debug\net10.0\TestProject.dll
+C:\Users\isaac\Praticar\CsharpProjects\TestProject\bin\Debug\net10.0\TestProject.pdb
+C:\Users\isaac\Praticar\CsharpProjects\TestProject\obj\Debug\net10.0\TestProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\isaac\Praticar\CsharpProjects\TestProject\obj\Debug\net10.0\TestProject.AssemblyInfoInputs.cache
+C:\Users\isaac\Praticar\CsharpProjects\TestProject\obj\Debug\net10.0\TestProject.AssemblyInfo.cs
+C:\Users\isaac\Praticar\CsharpProjects\TestProject\obj\Debug\net10.0\TestProject.csproj.CoreCompileInputs.cache
+C:\Users\isaac\Praticar\CsharpProjects\TestProject\obj\Debug\net10.0\TestProject.sourcelink.json
+C:\Users\isaac\Praticar\CsharpProjects\TestProject\obj\Debug\net10.0\TestProject.dll
+C:\Users\isaac\Praticar\CsharpProjects\TestProject\obj\Debug\net10.0\refint\TestProject.dll
+C:\Users\isaac\Praticar\CsharpProjects\TestProject\obj\Debug\net10.0\TestProject.pdb
+C:\Users\isaac\Praticar\CsharpProjects\TestProject\obj\Debug\net10.0\TestProject.genruntimeconfig.cache
+C:\Users\isaac\Praticar\CsharpProjects\TestProject\obj\Debug\net10.0\ref\TestProject.dll
