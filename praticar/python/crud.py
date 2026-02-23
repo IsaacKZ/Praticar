@@ -28,7 +28,7 @@ def remover_aluno():
             escolha = int(input("Escolha qual aluno deseja remover?"))
             confirmacao = input("Tem certeza que deseja remover esse aluno? S/N").upper()
             if confirmacao == "S":
-                if escolha >= 0:
+                if escolha >= 1:
                     turma.pop(escolha - 1)
                     print("Aluno excluido com sucesso!")
                     return
@@ -71,12 +71,15 @@ def adicionar_nota():
     except ValueError:
         print("Valor inválido!")
     except IndexError:
-        print("Nota inexistente!") 
+        print("Aluno inexistente!") 
 
 def atualizar_nota():
-    ver_turma()
     try:
-        if len(turma) >= 1:
+        if len(turma) == 0:
+
+            print("Ops! Não há nenhum aluno!")
+        elif len(turma) >= 1:
+            ver_turma()
             aluno_escolhido = int(input("Escolha o aluno que quer atualizar uma nota: "))
             print(turma[aluno_escolhido - 1]["notas"])
             escolha = int(input(f"Escolha uma nota para atualizar: \n"))
@@ -92,7 +95,10 @@ def atualizar_nota():
 
 def excluir_nota():
     try:
-        if len(turma) >= 1:
+        if len(turma) == 0:
+
+            print("Ops! Não há nenhum aluno!")
+        elif len(turma) >= 1:
             ver_turma()
             aluno_escolhido = int(input("Escolha o aluno que quer atualizar uma nota: "))
             print("Notas do aluno " , turma[aluno_escolhido - 1])
@@ -141,7 +147,7 @@ def menu():
                 break
             else:
                 print("Opção inválida!")
-    
+
         except ValueError:
             print('Opção inválida!')
 
