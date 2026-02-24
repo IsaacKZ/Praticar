@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 7: Structs | VibeCode</title>
+    <meta name="description" content="Aprenda C - Level 7: Structs. Crie seus próprios tipos de dados.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+    <nav class="main-nav">
+        <div class="nav-content">
+            <a href="index.html" class="logo">Vibe<span>Code</span>_C#</a>
+            <div class="level-nav">
+                <a href="level-6.html" class="level-nav-btn"><i class='bx bx-chevron-left'></i></a>
+                <span class="level-nav-title">Level 7</span>
+                <a href="level-8.html" class="level-nav-btn"><i class='bx bx-chevron-right'></i></a>
+            </div>
+            <div class="nav-right">
+                <button class="editor-nav-btn" onclick="openEditor()" title="Editor de Código"><i
+                        class='bx bx-code-alt'></i></button>
+                <div class="xp-display" onclick="openAchievements()">
+                    <span class="xp-badge" id="user-level-badge">Noob</span>
+                    <span class="xp-amount" id="xp-amount">0 XP</span>
+                </div>
+                <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema"><i class='bx bx-sun'
+                        id="theme-icon"></i></button>
+            </div>
+        </div>
+    </nav>
+    <div class="global-progress">
+        <div class="global-progress-fill" id="global-progress-fill"></div>
+    </div>
+    <div id="achievements-panel" class="achievements-panel">
+        <div class="achievements-overlay"></div>
+        <div class="achievements-content">
+            <button class="close-btn" onclick="closeAchievements()"><i class='bx bx-x'></i></button>
+            <h2><i class='bx bxs-trophy'></i> Conquistas</h2>
+            <div class="xp-stats">
+                <div class="stat-box"><span class="stat-value" id="total-xp">0</span><span class="stat-label">XP
+                        Total</span></div>
+                <div class="stat-box"><span class="stat-value" id="user-level">Noob</span><span
+                        class="stat-label">Nível</span></div>
+                <div class="stat-box"><span class="stat-value" id="next-level-xp">100</span><span
+                        class="stat-label">Próximo</span></div>
+            </div>
+            <div class="achievements-grid" id="achievements-grid"></div>
+        </div>
+    </div>
+    <main class="container">
+        <header class="level-page-header">
+            <div class="breadcrumb"><a href="index.html">Home</a> <i class='bx bx-chevron-right'></i> <span>Level
+                    7</span></div>
+            <span class="level-tag advanced-tag"><i class='bx bx-star'></i> AVANÇADO</span>
+            <h1>HeranÃ§a &amp; Interfaces</h1>
+            <p class="level-desc">HeranÃ§a, polimorfismo, classes abstratas e interfaces em C#.</p>
+            <div class="level-progress-bar">
+                <span class="progress-text" data-level="7">0/10</span>
+                <div class="progress-bar large">
+                    <div class="fill" data-level="7"></div>
+                </div>
+            </div>
+        </header>
+        <section class="lessons-section">
+            <div class="lessons-container">
+                <div class="lesson-item" data-lesson="7.1"><span class="lesson-id">7.1</span><span
+                        class="lesson-title">O que são Structs?</span><i class='bx bx-check-circle check-icon'></i>
+                </div>
+                <div class="lesson-item" data-lesson="7.2"><span class="lesson-id">7.2</span><span
+                        class="lesson-title">Declarando uma struct</span><i class='bx bx-check-circle check-icon'></i>
+                </div>
+                <div class="lesson-item" data-lesson="7.3"><span class="lesson-id">7.3</span><span
+                        class="lesson-title">Acessando membros</span><i class='bx bx-check-circle check-icon'></i></div>
+                <div class="lesson-item" data-lesson="7.4"><span class="lesson-id">7.4</span><span
+                        class="lesson-title">Struct com typedef</span><i class='bx bx-check-circle check-icon'></i>
+                </div>
+                <div class="lesson-item" data-lesson="7.5"><span class="lesson-id">7.5</span><span
+                        class="lesson-title">Array de structs</span><i class='bx bx-check-circle check-icon'></i></div>
+                <div class="lesson-item" data-lesson="7.6"><span class="lesson-id">7.6</span><span
+                        class="lesson-title">Ponteiros para structs</span><i class='bx bx-check-circle check-icon'></i>
+                </div>
+                <div class="lesson-item" data-lesson="7.7"><span class="lesson-id">7.7</span><span
+                        class="lesson-title">Operador seta -></span><i class='bx bx-check-circle check-icon'></i></div>
+                <div class="lesson-item" data-lesson="7.8"><span class="lesson-id">7.8</span><span
+                        class="lesson-title">Structs aninhadas</span><i class='bx bx-check-circle check-icon'></i></div>
+                <div class="lesson-item" data-lesson="7.9"><span class="lesson-id">7.9</span><span
+                        class="lesson-title">Passando structs p/ funções</span><i
+                        class='bx bx-check-circle check-icon'></i></div>
+                <div class="lesson-item" data-lesson="7.10"><span class="lesson-id">7.10</span><span
+                        class="lesson-title">🎯 Projeto: Cadastro</span><i class='bx bx-check-circle check-icon'></i>
+                </div>
+            </div>
+        </section>
+        <section class="level-actions">
+            <button class="quiz-btn " onclick="openQuiz(7)" data-quiz="7"><i class='bx bxs-brain'></i> Quiz Level
+                7</button>
+            <button class="challenge-btn" onclick="openChallenge(7)"><i class='bx bx-code-curly'></i> Desafio de
+                Código</button>
+        </section>
+        <nav class="level-bottom-nav">
+            <a href="index.html" class="nav-btn"><i class='bx bx-home'></i> Menu</a>
+            <a href="level-8.html" class="nav-btn next"><span>Próximo: Arquivos</span> <i
+                    class='bx bx-chevron-right'></i></a>
+        </nav>
+    </main>
+    <footer>
+        <p>VibeCode_C# &copy; 2024 | Feito com ☕ e muito <code>Console.WriteLine</code></p>
+    </footer>
+    <div id="lesson-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()"><i class='bx bx-x'></i></button>
+            <div class="modal-header"><span class="modal-lesson-id" id="modal-lesson-id">0.1</span>
+                <h2 id="modal-title">Título</h2>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+            <div class="code-block">
+                <div class="code-header"><span><i class='bx bx-code-alt'></i> Exemplo</span><button class="copy-btn"
+                        onclick="copyCode()"><i class='bx bx-copy'></i> Copiar</button></div>
+                <pre><code id="modal-code"></code></pre>
+            </div>
+            <div class="output-block">
+                <div class="output-header"><i class='bx bx-terminal'></i> Saída</div>
+                <pre id="modal-output"></pre>
+            </div>
+            <div class="modal-actions">
+                <button class="nav-btn prev-btn" id="prev-btn" onclick="prevLesson()"><i class='bx bx-chevron-left'></i>
+                    Anterior</button>
+                <button class="complete-btn" id="complete-btn" onclick="completeLesson()"><i class='bx bx-check'></i>
+                    Concluída</button>
+                <button class="nav-btn next-btn" id="next-btn" onclick="nextLesson()">Próxima <i
+                        class='bx bx-chevron-right'></i></button>
+            </div>
+        </div>
+    </div>
+    <div id="quiz-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content quiz-content">
+            <button class="close-btn" onclick="closeQuiz()"><i class='bx bx-x'></i></button>
+            <div class="quiz-header"><span class="quiz-level-tag" id="quiz-level-tag">Level 7</span>
+                <h2><i class='bx bxs-brain'></i> Quiz!</h2>
+                <p class="quiz-desc">5 perguntas para testar seu conhecimento.</p>
+            </div>
+            <div class="quiz-progress"><span id="quiz-progress-text">1/5</span>
+                <div class="progress-bar">
+                    <div class="fill" id="quiz-progress-fill"></div>
+                </div>
+            </div>
+            <div class="quiz-body">
+                <p class="quiz-question" id="quiz-question">Pergunta?</p>
+                <div class="quiz-options" id="quiz-options"></div>
+            </div>
+            <div class="quiz-result" id="quiz-result" style="display: none;">
+                <div class="result-icon" id="result-icon">🎉</div>
+                <h3 id="result-title">Parabéns!</h3>
+                <p id="result-text">5/5</p>
+                <p class="result-xp" id="result-xp">+50 XP</p>
+            </div>
+            <div class="quiz-actions"><button class="complete-btn" id="quiz-submit-btn" onclick="submitQuizAnswer()"
+                    disabled><i class='bx bx-check'></i> Confirmar</button></div>
+        </div>
+    </div>
+    <div id="editor-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content editor-content">
+            <button class="close-btn" onclick="closeEditor()"><i class='bx bx-x'></i></button>
+            <div class="editor-header">
+                <h2><i class='bx bx-code-alt'></i> Editor de Código C#</h2>
+                <p class="editor-desc">Escreva e teste seu código C#!</p>
+            </div>
+            <div class="editor-body">
+                <div class="code-editor">
+                    <div class="editor-toolbar"><span>Program.cs</span><button class="run-btn" onclick="runCode()"><i
+                                class='bx bx-play'></i> Executar</button></div><textarea id='code-input'
+                        spellcheck='false'>using System;
+
+Console.WriteLine("Hello, World!");</textarea>
+                </div>
+                <div class="editor-output">
+                    <div class="output-header"><i class='bx bx-terminal'></i> Saída</div>
+                    <pre id="editor-output">$ Clique em Executar</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="challenge-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content challenge-content">
+            <button class="close-btn" onclick="closeChallenge()"><i class='bx bx-x'></i></button>
+            <div class="challenge-header">
+                <h2 id="challenge-title">Desafio de Código</h2>
+                <p id="challenge-desc">Complete o código abaixo.</p>
+            </div>
+            <div id="challenge-code"></div>
+            <div id="challenge-output"></div>
+            <div id="challenge-result" style="display: none;">
+                <span id="challenge-result-icon">🎉</span>
+                <p id="challenge-result-title">Parabéns!</p>
+                <p id="challenge-result-xp">+30 XP</p>
+            </div>
+            <div class="challenge-actions">
+                <button class="challenge-btn" id="challenge-submit-btn" onclick="checkChallenge()"><i
+                        class='bx bx-check'></i> Verificar</button>
+            </div>
+        </div>
+    </div>
+    <div id="toast" class="toast"><i class='bx bx-check-circle'></i><span id="toast-message">Concluída!</span></div>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,287 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeCode: Aprenda C#</title>
+    <meta name="description" content="Aprenda C# do zero. 100 aulas práticas. Do básico ao LINQ.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-content">
+            <div class="logo">Vibe<span>Code</span>_C#</div>
+            <div class="nav-right">
+                <button class="editor-nav-btn" onclick="openEditor()" title="Editor de Código">
+                    <i class='bx bx-code-alt'></i>
+                </button>
+                <div class="xp-display" onclick="openAchievements()">
+                    <span class="xp-badge" id="user-level-badge">Noob</span>
+                    <span class="xp-amount" id="xp-amount">0 XP</span>
+                </div>
+                <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema">
+                    <i class='bx bx-sun' id="theme-icon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Global Progress Bar -->
+    <div class="global-progress">
+        <div class="global-progress-fill" id="global-progress-fill"></div>
+    </div>
+
+    <!-- Achievements Panel -->
+    <div id="achievements-panel" class="achievements-panel">
+        <div class="achievements-overlay"></div>
+        <div class="achievements-content">
+            <button class="close-btn" onclick="closeAchievements()"><i class='bx bx-x'></i></button>
+            <h2><i class='bx bxs-trophy'></i> Conquistas</h2>
+            <div class="xp-stats">
+                <div class="stat-box"><span class="stat-value" id="total-xp">0</span><span class="stat-label">XP
+                        Total</span></div>
+                <div class="stat-box"><span class="stat-value" id="user-level">Noob</span><span
+                        class="stat-label">Nível</span></div>
+                <div class="stat-box"><span class="stat-value" id="next-level-xp">100</span><span
+                        class="stat-label">Próximo</span></div>
+            </div>
+            <div class="achievements-grid" id="achievements-grid"></div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>Aprenda <span class="highlight">C#</span> na pura vibe.</h1>
+        <p class="tagline">Do zero ao LINQ. 100 aulas práticas. Sem enrolação.</p>
+    </header>
+
+    <main class="container">
+        <!-- Level Selection Grid -->
+        <section class="levels-grid">
+
+            <!-- Básico -->
+            <h2 class="section-title"><i class='bx bx-book-reader'></i> Básico</h2>
+            <div class="level-cards-row">
+                <a href="level-0.html" class="level-card-link">
+                    <div class="level-select-card" data-level="0">
+                        <span class="level-badge">Level 0</span>
+                        <h3>Hello .NET</h3>
+                        <p>Instale o .NET SDK e escreva seu primeiro programa.</p>
+                        <div class="card-progress">
+                            <span class="card-progress-text" data-level="0">0/10</span>
+                            <div class="progress-bar">
+                                <div class="fill" data-level="0"></div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="level-1.html" class="level-card-link">
+                    <div class="level-select-card" data-level="1">
+                        <span class="level-badge">Level 1</span>
+                        <h3>Tipos e Variáveis</h3>
+                        <p>Tipos de dados, var, conversões e operadores.</p>
+                        <div class="card-progress">
+                            <span class="card-progress-text" data-level="1">0/10</span>
+                            <div class="progress-bar">
+                                <div class="fill" data-level="1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="level-2.html" class="level-card-link">
+                    <div class="level-select-card" data-level="2">
+                        <span class="level-badge">Level 2</span>
+                        <h3>Console I/O</h3>
+                        <p>Console.WriteLine, ReadLine e formatação.</p>
+                        <div class="card-progress">
+                            <span class="card-progress-text" data-level="2">0/10</span>
+                            <div class="progress-bar">
+                                <div class="fill" data-level="2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="level-3.html" class="level-card-link">
+                    <div class="level-select-card" data-level="3">
+                        <span class="level-badge">Level 3</span>
+                        <h3>Controle de Fluxo</h3>
+                        <p>if, else, switch com pattern matching e ternário.</p>
+                        <div class="card-progress">
+                            <span class="card-progress-text" data-level="3">0/10</span>
+                            <div class="progress-bar">
+                                <div class="fill" data-level="3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Intermediário -->
+            <h2 class="section-title"><i class='bx bx-code-block'></i> Intermediário</h2>
+            <div class="level-cards-row">
+                <a href="level-4.html" class="level-card-link">
+                    <div class="level-select-card" data-level="4">
+                        <span class="level-badge">Level 4</span>
+                        <h3>Loops & Arrays</h3>
+                        <p>for, while, foreach e arrays.</p>
+                        <div class="card-progress">
+                            <span class="card-progress-text" data-level="4">0/10</span>
+                            <div class="progress-bar">
+                                <div class="fill" data-level="4"></div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="level-5.html" class="level-card-link">
+                    <div class="level-select-card" data-level="5">
+                        <span class="level-badge">Level 5</span>
+                        <h3>Métodos & Classes Intro</h3>
+                        <p>Métodos, parâmetros, retorno e sua primeira classe.</p>
+                        <div class="card-progress">
+                            <span class="card-progress-text" data-level="5">0/10</span>
+                            <div class="progress-bar">
+                                <div class="fill" data-level="5"></div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="level-6.html" class="level-card-link">
+                    <div class="level-select-card boss" data-level="6">
+                        <span class="level-badge boss-badge"><i class='bx bx-code-curly'></i> BOSS</span>
+                        <h3>POO — O Poder dos Objetos</h3>
+                        <p>Classes, objetos, construtores e encapsulamento.</p>
+                        <div class="card-progress">
+                            <span class="card-progress-text" data-level="6">0/10</span>
+                            <div class="progress-bar">
+                                <div class="fill" data-level="6"></div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Avançado -->
+            <h2 class="section-title"><i class='bx bx-star'></i> Avançado</h2>
+            <div class="level-cards-row">
+                <a href="level-7.html" class="level-card-link">
+                    <div class="level-select-card advanced" data-level="7">
+                        <span class="level-badge advanced-badge"><i class='bx bx-star'></i> AVANÇADO</span>
+                        <h3>Herança & Interfaces</h3>
+                        <p>Herança, polimorfismo e interfaces.</p>
+                        <div class="card-progress">
+                            <span class="card-progress-text" data-level="7">0/10</span>
+                            <div class="progress-bar">
+                                <div class="fill" data-level="7"></div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="level-8.html" class="level-card-link">
+                    <div class="level-select-card advanced" data-level="8">
+                        <span class="level-badge advanced-badge"><i class='bx bx-star'></i> AVANÇADO</span>
+                        <h3>Coleções & LINQ</h3>
+                        <p>List, Dictionary e consultas LINQ.</p>
+                        <div class="card-progress">
+                            <span class="card-progress-text" data-level="8">0/10</span>
+                            <div class="progress-bar">
+                                <div class="fill" data-level="8"></div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="level-9.html" class="level-card-link">
+                    <div class="level-select-card master" data-level="9">
+                        <span class="level-badge master-badge"><i class='bx bxs-crown'></i> MASTER</span>
+                        <h3>Async, Arquivos & Projeto Final</h3>
+                        <p>async/await, File I/O e projeto integrador.</p>
+                        <div class="card-progress">
+                            <span class="card-progress-text" data-level="9">0/10</span>
+                            <div class="progress-bar">
+                                <div class="fill" data-level="9"></div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Recursos -->
+            <h2 class="section-title"><i class='bx bx-book-open'></i> Recursos</h2>
+            <div class="level-cards-row resources-row">
+                <a href="recursos.html#glossary" class="level-card-link">
+                    <div class="resource-select-card">
+                        <i class='bx bx-book-bookmark'></i>
+                        <h3>Glossário</h3>
+                        <p>Termos essenciais</p>
+                    </div>
+                </a>
+                <a href="recursos.html#cheatsheet" class="level-card-link">
+                    <div class="resource-select-card">
+                        <i class='bx bx-code-curly'></i>
+                        <h3>Cheat Sheet</h3>
+                        <p>Referência rápida</p>
+                    </div>
+                </a>
+                <a href="recursos.html#common-errors" class="level-card-link">
+                    <div class="resource-select-card">
+                        <i class='bx bx-bug'></i>
+                        <h3>Erros Comuns</h3>
+                        <p>Evite armadilhas</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>VibeCode_C# &copy; 2024 | Feito com ☕ e muito <code>Console.WriteLine</code></p>
+    </footer>
+
+    <!-- Editor Modal -->
+    <div id="editor-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content editor-content">
+            <button class="close-btn" onclick="closeEditor()"><i class='bx bx-x'></i></button>
+            <div class="editor-header">
+                <h2><i class='bx bx-code-alt'></i> Editor de Código C#</h2>
+                <p class="editor-desc">Escreva e teste seu código C#!</p>
+            </div>
+            <div class="editor-body">
+                <div class="code-editor">
+                    <div class="editor-toolbar">
+                        <span>Program.cs</span>
+                        <button class="run-btn" onclick="runCode()"><i class='bx bx-play'></i> Executar</button>
+                    </div>
+                    <textarea id="code-input" spellcheck="false">using System;
+
+Console.WriteLine("Hello, World!");</textarea>
+                </div>
+                <div class="editor-output">
+                    <div class="output-header">
+                        <i class='bx bx-terminal'></i> Saída
+                    </div>
+                    <pre id="editor-output">$ Clique em "Executar" para ver a saída</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <i class='bx bx-check-circle'></i>
+        <span id="toast-message">Aula concluída!</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

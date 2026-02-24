@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamento - Dalmir</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app">
+        <!-- Header compacto -->
+        <header class="header">
+            <div class="logo">
+                <i class='bx bx-receipt'></i>
+            </div>
+            <div class="header-text">
+                <h1>Orçamento</h1>
+                <p>Dalmir José Zoccatelli</p>
+            </div>
+        </header>
+
+        <!-- Formulário -->
+        <section class="form-card">
+            <div class="input-group">
+                <label for="cliente-nome">Cliente</label>
+                <input type="text" id="cliente-nome" placeholder="Nome do cliente">
+            </div>
+
+            <div class="input-group">
+                <label for="item-descricao">Serviço</label>
+                <input type="text" id="item-descricao" placeholder="O que será feito?">
+            </div>
+
+            <div class="input-group">
+                <label for="item-valor">Valor</label>
+                <div class="valor-wrapper">
+                    <span class="currency">R$</span>
+                    <input type="number" id="item-valor" placeholder="0,00" min="0" step="0.01">
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-add" id="btn-adicionar">
+                <i class='bx bx-plus'></i> Adicionar
+            </button>
+        </section>
+
+        <!-- Lista de Itens -->
+        <section class="items-section">
+            <div class="section-header">
+                <h2>Serviços</h2>
+                <div class="total-badge" id="total-section" style="display: none;">
+                    <span id="total-value">R$ 0,00</span>
+                </div>
+            </div>
+
+            <div class="items-list" id="items-list">
+                <div class="empty-state" id="empty-message">
+                    <i class='bx bx-package'></i>
+                    <p>Nenhum serviço</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Botão Gerar -->
+        <footer class="footer-action">
+            <button type="button" class="btn btn-generate" id="btn-gerar">
+                <i class='bx bx-download'></i> Gerar PDF
+            </button>
+        </footer>
+    </div>
+
+    <script src="jspdf.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

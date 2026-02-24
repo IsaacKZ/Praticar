@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursos | VibeCode C#</title>
+    <meta name="description" content="Glossário, Cheat Sheet e Erros Comuns em C#.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-content">
+            <a href="index.html" class="logo">Vibe<span>Code</span>_C#</a>
+            <div class="nav-right">
+                <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema">
+                    <i class='bx bx-sun' id="theme-icon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="level-page-header">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <i class='bx bx-chevron-right'></i> <span>Recursos</span>
+            </div>
+            <h1><i class='bx bx-book-open'></i> Recursos Extras</h1>
+            <p class="level-desc">Glossário, Cheat Sheet e Erros Comuns para referência rápida em C# Moderno.</p>
+        </header>
+
+        <!-- Glossário -->
+        <section class="resource-card" id="glossary">
+            <h3><i class='bx bx-book-bookmark'></i> Glossário C#</h3>
+            <div class="glossary-grid">
+                <div class="glossary-item"><span class="term">Classe</span><span class="def">Molde para criar objetos
+                        (blueprint)</span></div>
+                <div class="glossary-item"><span class="term">Objeto</span><span class="def">Instância de uma
+                        classe</span></div>
+                <div class="glossary-item"><span class="term">Método</span><span class="def">Bloco de código que executa
+                        uma ação</span></div>
+                <div class="glossary-item"><span class="term">Propriedade</span><span class="def">Membro que expõe um
+                        dado com lógica de acesso</span></div>
+                <div class="glossary-item"><span class="term">Namespace</span><span class="def">Organizador lógico de
+                        classes (pastas virtuais)</span></div>
+                <div class="glossary-item"><span class="term">LINQ</span><span class="def">Linguagem de consulta
+                        integrada para coleções</span></div>
+                <div class="glossary-item"><span class="term">Interface</span><span class="def">Contrato que obriga a
+                        implementação de membros</span></div>
+                <div class="glossary-item"><span class="term">Async / Await</span><span class="def">Palavras-chave para
+                        programação assíncrona</span></div>
+                <div class="glossary-item"><span class="term">Generics &lt;T&gt;</span><span class="def">Permite criar
+                        classes para qualquer tipo de dado</span></div>
+                <div class="glossary-item"><span class="term">CLR</span><span class="def">O motor que executa o código
+                        C# (ambiente .NET)</span></div>
+                <div class="glossary-item"><span class="term">NuGet</span><span class="def">Gerenciador de pacotes e
+                        bibliotecas externas</span></div>
+                <div class="glossary-item"><span class="term">GC (Garbage Collector)</span><span class="def">Limpeza
+                        automática da memória</span></div>
+                <div class="glossary-item"><span class="term">Exception</span><span class="def">Objeto que representa um
+                        erro em tempo de execução</span></div>
+                <div class="glossary-item"><span class="term">Tuple</span><span class="def">Estrutura leve para agrupar
+                        múltiplos valores</span></div>
+                <div class="glossary-item"><span class="term">Reflection</span><span class="def">Capacidade de
+                        inspecionar metadados em runtime</span></div>
+            </div>
+        </section>
+
+        <!-- Cheat Sheet -->
+        <section class="resource-card" id="cheatsheet">
+            <h3><i class='bx bx-code-curly'></i> C# Cheat Sheet</h3>
+            <div class="cheatsheet-grid">
+                <div class="cheat-block">
+                    <h4>Estrutura (Top-level)</h4>
+                    <pre><code>using System;
+
+Console.WriteLine("Hello C#!");
+
+void Ola() => Console.WriteLine("Oi");
+Ola();</code></pre>
+                </div>
+                <div class="cheat-block">
+                    <h4>Tipos e Variáveis</h4>
+                    <pre><code>var x = 10;           // inferência
+string s = "Texto";
+double d = 10.5;
+bool b = true;
+decimal m = 5.99m;    // dinheiro</code></pre>
+                </div>
+                <div class="cheat-block">
+                    <h4>Interpolação de String</h4>
+                    <pre><code>string nome = "Ana";
+int idade = 25;
+// Use $ no início
+Console.WriteLine($"Oi {nome}, {idade} anos");
+Console.WriteLine($"{valor:F2}"); // 2 casas</code></pre>
+                </div>
+                <div class="cheat-block">
+                    <h4>Coleções (List)</h4>
+                    <pre><code>var lista = new List&lt;string&gt;();
+lista.Add("Item 1");
+lista.Remove("Item 1");
+int count = lista.Count;</code></pre>
+                </div>
+                <div class="cheat-block">
+                    <h4>LINQ (Consultas)</h4>
+                    <pre><code>using System.Linq;
+
+var filtrados = lista
+    .Where(x => x.Length > 5)
+    .OrderBy(x => x)
+    .ToList();</code></pre>
+                </div>
+                <div class="cheat-block">
+                    <h4>Classes e Props</h4>
+                    <pre><code>class Player {
+    public string Name { get; set; }
+    public int Level { get; private set; }
+    
+    public Player(string n) => Name = n;
+}</code></pre>
+                </div>
+                <div class="cheat-block">
+                    <h4>Controle de Fluxo</h4>
+                    <pre><code>if (b) { } else { }
+switch (x) {
+    case 1 => "Um",
+    _ => "Outro"
+}; // switch expression</code></pre>
+                </div>
+                <div class="cheat-block">
+                    <h4>Loops</h4>
+                    <pre><code>foreach (var item in lista) { }
+for (int i=0; i&lt;10; i++) { }
+while (condicao) { }</code></pre>
+                </div>
+                <div class="cheat-block">
+                    <h4>Tratamento de Erros</h4>
+                    <pre><code>try {
+    // código perigoso
+} catch (Exception ex) {
+    Console.WriteLine(ex.Message);
+} finally {
+    // sempre roda
+}</code></pre>
+                </div>
+                <div class="cheat-block">
+                    <h4>Async/Await</h4>
+                    <pre><code>async Task&lt;string&gt; GetData() {
+    await Task.Delay(1000);
+    return "Pronto";
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Erros Comuns -->
+        <section class="resource-card" id="common-errors">
+            <h3><i class='bx bx-bug'></i> Erros Comuns em C#</h3>
+            <div class="errors-list">
+                <div class="error-item">
+                    <div class="error-code">❌ NullReferenceException</div>
+                    <div class="error-fix">Tentativa de acessar algo que está null. Use <code>if (obj != null)</code> ou
+                        <code>obj?.Member</code>.</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-code">❌ Namespace Errado</div>
+                    <div class="error-fix">Esqueceu o <code>using</code> necessário (ex: <code>using System.Linq;</code>
+                        para filtrar listas).</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-code">❌ Atribuir vs Comparar</div>
+                    <div class="error-fix">Assim como em C, <code>=</code> atribui e <code>==</code> compara. O C# avisa
+                        mais, mas cuidado.</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-code">❌ Async sem Await</div>
+                    <div class="error-fix">O código continua rodando sem esperar a Task terminar. Use
+                        <code>await</code>!</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-code">❌ Erro de Ponto Flutuante</div>
+                    <div class="error-fix">Usar <code>double</code> para dinheiro. Sempre use <code>decimal</code>
+                        (sufixo m) para valores monetários.</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-code">❌ Static vs Instance</div>
+                    <div class="error-fix">Tentar acessar um membro não-estático diretamente pela classe sem criar um
+                        objeto (new).</div>
+                </div>
+                <div class="error-item">
+                    <div class="error-code">❌ Esquecer ponto e vírgula</div>
+                    <div class="error-fix">Mesmo em C# moderno, o <code>;</code> é obrigatório na maioria dos comandos.
+                    </div>
+                </div>
+                <div class="error-item">
+                    <div class="error-code">❌ Indice fora do Array</div>
+                    <div class="error-fix">Indices começam em 0. Se o Count é 5, o último índice é 4.</div>
+                </div>
+            </div>
+        </section>
+
+        <nav class="level-bottom-nav">
+            <a href="index.html" class="nav-btn"><i class='bx bx-home'></i> Voltar ao Menu</a>
+        </nav>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>VibeCode_C# &copy; 2024 | Feito com ☕ e muito <code>Console.WriteLine</code></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
+
