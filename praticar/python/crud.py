@@ -1,7 +1,7 @@
 """
-arquivo python pra eu tentar fazer crud sozinho (sem inteligencia artificial)
+arquivo python pra eu tentar fazer crud sozinho (utilizando IA como ASSISTENTE apenas)
 tentarei fazer um gerenciamento de notas de um aluno, depois avançarei para uma turma.
-objetivo atual: fazer função escolher aluno
+objetivo atual: aprender POO para aprimoração do código
 """
 
 turma = []
