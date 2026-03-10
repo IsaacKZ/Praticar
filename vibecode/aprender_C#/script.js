@@ -1,5 +1,5 @@
 // ===================================================
-// VIBECODE_C# - LEARN C# JAVASCRIPT
+// APRENDER C# - LEARN C# JAVASCRIPT
 // Full lesson content and functionality
 // ===================================================
 
@@ -1305,43 +1305,55 @@ Console.WriteLine($"{t.Fahrenheit}°F");`,
     public void Depositar(double valor) {
         if (valor <= 0) throw new ArgumentException("Valor inválido");
         _saldo += valor;
-        Console.WriteLine($"Depósito: R\${valor: F2
-}.Saldo: R\${ _saldo: F2 } ");
+        Console.WriteLine($"Depósito: R\${valor:F2}. Saldo: R\${_saldo:F2}");
     }
 
     public bool Sacar(double valor) {
-    if (valor > _saldo) { Console.WriteLine("Saldo insuficiente!"); return false; }
-    _saldo -= valor;
-    Console.WriteLine($"Saque: R\${valor:F2}. Saldo: R\${_saldo:F2}");
-    return true;
-}
+        if (valor > _saldo) { Console.WriteLine("Saldo insuficiente!"); return false; }
+        _saldo -= valor;
+        Console.WriteLine($"Saque: R\${valor:F2}. Saldo: R\${_saldo:F2}");
+        return true;
+    }
 }
 
 var conta = new ContaBancaria();
 conta.Depositar(500);
 conta.Sacar(200);
-conta.Sacar(400); `,
+conta.Sacar(400);`,
         output: "Depósito: R$500,00. Saldo: R$500,00\nSaque: R$200,00. Saldo: R$300,00\nSaldo insuficiente!"
     },
     '6.5': {
-        title: "Métodos de instância",
-        body: `< p > Métodos de instância operam sobre os dados do objeto específico.São chamados em um objeto.</p > `,
-        code: `class Circulo {
-    public double Raio;
-
-    public Circulo(double raio) { Raio = raio; }
-
-    public double Area() => Math.PI * Raio * Raio;
-    public double Perimetro() => 2 * Math.PI * Raio;
-    public bool MaiorQue(Circulo outro) => Raio > outro.Raio;
+        title: "Structs vs Classes",
+        body: `<p>Em C#, <strong>struct</strong> é um <strong>value type</strong> (armazenado na stack) e <strong>class</strong> é um <strong>reference type</strong> (armazenado na heap).</p>
+        <ul>
+            <li><code>struct</code> — copiado por valor. Ideal para dados pequenos e imutáveis.</li>
+            <li><code>class</code> — copiado por referência. Ideal para objetos complexos.</li>
+        </ul>
+        <p>Structs não suportam herança (exceto de interfaces) e são automaticamente selados.</p>`,
+        code: `struct Ponto {
+    public int X, Y;
+    public Ponto(int x, int y) { X = x; Y = y; }
+    public override string ToString() => $"({X}, {Y})";
 }
 
-var c1 = new Circulo(5);
-var c2 = new Circulo(3);
-Console.WriteLine($"Área: {c1.Area():F2}");
-Console.WriteLine($"Perímetro: {c1.Perimetro():F2}");
-Console.WriteLine($"c1 maior que c2: {c1.MaiorQue(c2)}"); `,
-        output: "Área: 78,54\nPerímetro: 31,42\nc1 maior que c2: True"
+class PontoRef {
+    public int X, Y;
+    public PontoRef(int x, int y) { X = x; Y = y; }
+}
+
+// Struct: cópia por valor
+var p1 = new Ponto(1, 2);
+var p2 = p1;       // CÓPIA!
+p2.X = 99;
+Console.WriteLine($"p1: {p1}");  // (1, 2) — não mudou!
+Console.WriteLine($"p2: ({p2.X}, {p2.Y})");
+
+// Class: cópia por referência
+var r1 = new PontoRef(1, 2);
+var r2 = r1;       // REFERÊNCIA!
+r2.X = 99;
+Console.WriteLine($"r1.X: {r1.X}");  // 99 — mudou!`,
+        output: "p1: (1, 2)\np2: (99, 2)\nr1.X: 99"
     },
     '6.6': {
         title: "A palavra-chave this",
@@ -2252,12 +2264,12 @@ const XP_PER_LESSON = 10;
 const XP_PER_LEVEL_COMPLETE = 50;
 
 const LEVELS = [
-    { name: 'Noob', minXP: 0 },
-    { name: 'Iniciante', minXP: 200 },
-    { name: 'Aprendiz', minXP: 500 },
-    { name: 'Dev Jr', minXP: 1000 },
-    { name: 'Dev', minXP: 1600 },
-    { name: 'Mestre', minXP: 2200 }
+    { name: 'Iniciante', minXP: 0 },
+    { name: 'Aprendiz', minXP: 200 },
+    { name: 'Desenvolvedor Jr', minXP: 500 },
+    { name: 'Desenvolvedor', minXP: 1000 },
+    { name: 'Sênior', minXP: 1600 },
+    { name: 'Especialista', minXP: 2200 }
 ];
 
 const ACHIEVEMENTS = [
@@ -2265,10 +2277,10 @@ const ACHIEVEMENTS = [
     { id: 'level_0', name: 'Level 0', desc: 'Complete o Level 0', icon: '✅', check: (p) => getLevelProgress(p, 0) === 10 },
     { id: 'level_1', name: 'Level 1', desc: 'Complete o Level 1', icon: '✅', check: (p) => getLevelProgress(p, 1) === 10 },
     { id: 'halfway', name: 'Metade', desc: '50 aulas', icon: '🏃', check: (p) => Object.keys(p).length >= 50 },
-    { id: 'boss_slayer', name: 'Boss Slayer', desc: 'Complete o Level 6', icon: '💀', check: (p) => getLevelProgress(p, 6) === 10 },
+    { id: 'boss_slayer', name: 'Avaliação Completa', desc: 'Complete o Level 6', icon: '💀', check: (p) => getLevelProgress(p, 6) === 10 },
     { id: 'completionist', name: 'Completionist', desc: '100 aulas', icon: '🏆', check: (p) => Object.keys(p).length >= 100 },
-    { id: 'xp_100', name: 'XP Hunter', desc: '100 XP', icon: '⭐', check: (p, xp) => xp >= 100 },
-    { id: 'xp_500', name: 'XP Master', desc: '500 XP', icon: '🌟', check: (p, xp) => xp >= 500 }
+    { id: 'xp_100', name: 'Caçador de XP', desc: '100 XP', icon: '⭐', check: (p, xp) => xp >= 100 },
+    { id: 'xp_500', name: 'Estudioso', desc: '500 XP', icon: '🌟', check: (p, xp) => xp >= 500 }
 ];
 
 // ==================== QUIZ DATA ====================
@@ -2319,7 +2331,7 @@ const QUIZ_DATA = {
         { q: "Encapsulamento em C# usa:", opts: ["Classes abstratas", "Modificadores de acesso (public/private)", "Interfaces", "Generics"], ans: 1 },
         { q: "Auto-property é:", opts: ["{ get; set; } sem corpo", "Campo public", "Propriedade static", "Método virtual"], ans: 0 },
         { q: "Membros static pertencem à:", opts: ["Instância do objeto", "Classe (não ao objeto)", "Interface", "Namespace"], ans: 1 },
-        { q: "Composição é quando:", opts: ["Classe herda de outra", "Classe contém outro objeto", "Classe implementa interface", "Método chama a si mesmo"], ans: 1 },
+        { q: "Struct em C# é:", opts: ["Reference type na heap", "Value type na stack", "Igual a class", "Tipo dinâmico"], ans: 1 },
         { q: "override ToString() muda:", opts: ["Nome da classe", "Como o objeto é representado como string", "Hashcode", "Comparação"], ans: 1 }
     ],
     7: [

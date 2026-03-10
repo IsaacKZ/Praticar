@@ -1,12 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Level 6: Ponteiros & Memória | VibeCode</title>
-    <meta name="description"
-        content="Aprenda C - Level 6: Ponteiros & Memória. Domine o poder absoluto sobre a memória.">
+    <title>Módulo 6: POO — O Poder dos Objetos | Aprender C#</title>
+    <meta name="description" content="Aprenda C# do zero. 100 aulas práticas.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
@@ -19,7 +18,7 @@
 <body>
     <nav class="main-nav">
         <div class="nav-content">
-            <a href="index.html" class="logo">Vibe<span>Code</span>_C#</a>
+            <a href="index.html" class="logo">Aprender<span>C#</span></a>
             <div class="level-nav">
                 <a href="level-5.html" class="level-nav-btn"><i class='bx bx-chevron-left'></i></a>
                 <span class="level-nav-title">Level 6</span>
@@ -29,7 +28,7 @@
                 <button class="editor-nav-btn" onclick="openEditor()" title="Editor de Código"><i
                         class='bx bx-code-alt'></i></button>
                 <div class="xp-display" onclick="openAchievements()">
-                    <span class="xp-badge" id="user-level-badge">Noob</span>
+                    <span class="xp-badge" id="user-level-badge">Iniciante</span>
                     <span class="xp-amount" id="xp-amount">0 XP</span>
                 </div>
                 <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema"><i class='bx bx-sun'
@@ -48,7 +47,7 @@
             <div class="xp-stats">
                 <div class="stat-box"><span class="stat-value" id="total-xp">0</span><span class="stat-label">XP
                         Total</span></div>
-                <div class="stat-box"><span class="stat-value" id="user-level">Noob</span><span
+                <div class="stat-box"><span class="stat-value" id="user-level">Iniciante</span><span
                         class="stat-label">Nível</span></div>
                 <div class="stat-box"><span class="stat-value" id="next-level-xp">100</span><span
                         class="stat-label">Próximo</span></div>
@@ -60,9 +59,9 @@
         <header class="level-page-header">
             <div class="breadcrumb"><a href="index.html">Home</a> <i class='bx bx-chevron-right'></i> <span>Level
                     6</span></div>
-            <span class="level-tag boss-tag"><i class='bx bxs-skull'></i> BOSS</span>
-            <h1>Ponteiros & Memória</h1>
-            <p class="level-desc">Classes, objetos, propriedades, encapsulamento e composiÃ§Ã£o.</p>
+            <span class="level-tag boss-tag"><i class='bx bx-code-curly'></i> AVALIAÇÃO</span>
+            <h1>POO — O Poder dos Objetos</h1>
+            <p class="level-desc">Classes, objetos, propriedades, encapsulamento e composição.</p>
             <div class="level-progress-bar">
                 <span class="progress-text" data-level="6">0/10</span>
                 <div class="progress-bar large">
@@ -73,46 +72,46 @@
         <section class="lessons-section">
             <div class="lessons-container">
                 <div class="lesson-item" data-lesson="6.1"><span class="lesson-id">6.1</span><span
-                        class="lesson-title">O que é memória RAM?</span><i class='bx bx-check-circle check-icon'></i>
+                        class="lesson-title">Classe vs Objeto</span><i class='bx bx-check-circle check-icon'></i>
                 </div>
                 <div class="lesson-item" data-lesson="6.2"><span class="lesson-id">6.2</span><span
-                        class="lesson-title">Endereços hexadecimais</span><i class='bx bx-check-circle check-icon'></i>
-                </div>
+                        class="lesson-title">Construtores</span><i class='bx bx-check-circle check-icon'></i></div>
                 <div class="lesson-item" data-lesson="6.3"><span class="lesson-id">6.3</span><span
-                        class="lesson-title">Operador & (endereço)</span><i class='bx bx-check-circle check-icon'></i>
+                        class="lesson-title">Propriedades (get/set)</span><i class='bx bx-check-circle check-icon'></i>
                 </div>
                 <div class="lesson-item" data-lesson="6.4"><span class="lesson-id">6.4</span><span
-                        class="lesson-title">O que é ponteiro?</span><i class='bx bx-check-circle check-icon'></i></div>
+                        class="lesson-title">Encapsulamento</span><i class='bx bx-check-circle check-icon'></i></div>
                 <div class="lesson-item" data-lesson="6.5"><span class="lesson-id">6.5</span><span
-                        class="lesson-title">Declarando ponteiros</span><i class='bx bx-check-circle check-icon'></i>
+                        class="lesson-title">Structs vs Classes</span><i class='bx bx-check-circle check-icon'></i>
                 </div>
                 <div class="lesson-item" data-lesson="6.6"><span class="lesson-id">6.6</span><span
-                        class="lesson-title">Dereferenciando</span><i class='bx bx-check-circle check-icon'></i></div>
+                        class="lesson-title">A palavra-chave this</span><i class='bx bx-check-circle check-icon'></i></div>
                 <div class="lesson-item" data-lesson="6.7"><span class="lesson-id">6.7</span><span
-                        class="lesson-title">Encapsulamento</span><i class='bx bx-check-circle check-icon'></i></div>
+                        class="lesson-title">static</span><i class='bx bx-check-circle check-icon'></i></div>
                 <div class="lesson-item" data-lesson="6.8"><span class="lesson-id">6.8</span><span
-                        class="lesson-title">Aritmética de ponteiros</span><i class='bx bx-check-circle check-icon'></i>
+                        class="lesson-title">Composição</span><i class='bx bx-check-circle check-icon'></i>
                 </div>
                 <div class="lesson-item" data-lesson="6.9"><span class="lesson-id">6.9</span><span
-                        class="lesson-title">static</span><i class='bx bx-check-circle check-icon'></i></div>
+                        class="lesson-title">Sobrescrevendo ToString()</span><i class='bx bx-check-circle check-icon'></i></div>
                 <div class="lesson-item" data-lesson="6.10"><span class="lesson-id">6.10</span><span
-                        class="lesson-title">🏆 Projeto Final</span><i class='bx bx-check-circle check-icon'></i></div>
+                        class="lesson-title">🏆 Projeto: Sistema de Cadastro</span><i
+                        class='bx bx-check-circle check-icon'></i></div>
             </div>
         </section>
         <section class="level-actions">
-            <button class="quiz-btn boss-quiz" onclick="openQuiz(6)" data-quiz="6"><i class='bx bxs-skull'></i> Quiz
+            <button class="quiz-btn boss-quiz" onclick="openQuiz(6)" data-quiz="6"><i class='bx bx-code-curly'></i> Quiz
                 Level 6</button>
             <button class="challenge-btn" onclick="openChallenge(6)"><i class='bx bx-code-curly'></i> Desafio de
                 Código</button>
         </section>
         <nav class="level-bottom-nav">
             <a href="index.html" class="nav-btn"><i class='bx bx-home'></i> Menu</a>
-            <a href="level-7.html" class="nav-btn next"><span>Próximo: Structs</span> <i
+            <a href="level-7.html" class="nav-btn next"><span>Próximo: Herança & Interfaces</span> <i
                     class='bx bx-chevron-right'></i></a>
         </nav>
     </main>
     <footer>
-        <p>VibeCode_C# &copy; 2024 | Feito com ☕ e muito <code>Console.WriteLine</code></p>
+        <p>Aprender C# &copy; 2024 | Feito com ☕ e muito <code>Console.WriteLine</code></p>
     </footer>
     <div id="lesson-modal" class="modal">
         <div class="modal-overlay"></div>

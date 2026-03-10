@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Level 5: Funções | VibeCode</title>
-    <meta name="description" content="Aprenda C - Level 5: Funções. Organize seu código como um profissional.">
+    <title>Módulo 5: Funções e Métodos | Aprender C#</title>
+    <meta name="description" content="Aprenda C# do zero. 100 aulas práticas.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
@@ -18,7 +18,7 @@
 <body>
     <nav class="main-nav">
         <div class="nav-content">
-            <a href="index.html" class="logo">Vibe<span>Code</span>_C#</a>
+            <a href="index.html" class="logo">Aprender<span>C#</span></a>
             <div class="level-nav">
                 <a href="level-4.html" class="level-nav-btn"><i class='bx bx-chevron-left'></i></a>
                 <span class="level-nav-title">Level 5</span>
@@ -28,7 +28,7 @@
                 <button class="editor-nav-btn" onclick="openEditor()" title="Editor de Código"><i
                         class='bx bx-code-alt'></i></button>
                 <div class="xp-display" onclick="openAchievements()">
-                    <span class="xp-badge" id="user-level-badge">Noob</span>
+                    <span class="xp-badge" id="user-level-badge">Iniciante</span>
                     <span class="xp-amount" id="xp-amount">0 XP</span>
                 </div>
                 <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema"><i class='bx bx-sun'
@@ -47,7 +47,7 @@
             <div class="xp-stats">
                 <div class="stat-box"><span class="stat-value" id="total-xp">0</span><span class="stat-label">XP
                         Total</span></div>
-                <div class="stat-box"><span class="stat-value" id="user-level">Noob</span><span
+                <div class="stat-box"><span class="stat-value" id="user-level">Iniciante</span><span
                         class="stat-label">Nível</span></div>
                 <div class="stat-box"><span class="stat-value" id="next-level-xp">100</span><span
                         class="stat-label">Próximo</span></div>
@@ -60,8 +60,8 @@
             <div class="breadcrumb"><a href="index.html">Home</a> <i class='bx bx-chevron-right'></i> <span>Level
                     5</span></div>
             <span class="level-tag ">Level 5</span>
-            <h1>Funções</h1>
-            <p class="level-desc">MÃ©todos, parÃ¢metros, sobrecarga, recursÃ£o e introduÃ§Ã£o a classes.</p>
+            <h1>Métodos & Classes Intro</h1>
+            <p class="level-desc">Métodos, parâmetros, sobrecarga, recursão e introdução a classes.</p>
             <div class="level-progress-bar">
                 <span class="progress-text" data-level="5">0/10</span>
                 <div class="progress-bar large">
@@ -72,28 +72,28 @@
         <section class="lessons-section">
             <div class="lessons-container">
                 <div class="lesson-item" data-lesson="5.1"><span class="lesson-id">5.1</span><span
-                        class="lesson-title">O que são funções?</span><i class='bx bx-check-circle check-icon'></i>
+                        class="lesson-title">O que são métodos?</span><i class='bx bx-check-circle check-icon'></i>
                 </div>
                 <div class="lesson-item" data-lesson="5.2"><span class="lesson-id">5.2</span><span
-                        class="lesson-title">Funções void</span><i class='bx bx-check-circle check-icon'></i></div>
+                        class="lesson-title">Métodos void</span><i class='bx bx-check-circle check-icon'></i></div>
                 <div class="lesson-item" data-lesson="5.3"><span class="lesson-id">5.3</span><span
-                        class="lesson-title">Funções com retorno</span><i class='bx bx-check-circle check-icon'></i>
+                        class="lesson-title">Métodos com retorno</span><i class='bx bx-check-circle check-icon'></i>
                 </div>
                 <div class="lesson-item" data-lesson="5.4"><span class="lesson-id">5.4</span><span
-                        class="lesson-title">Parâmetros</span><i class='bx bx-check-circle check-icon'></i></div>
+                        class="lesson-title">Parâmetros e ref/out</span><i class='bx bx-check-circle check-icon'></i></div>
                 <div class="lesson-item" data-lesson="5.5"><span class="lesson-id">5.5</span><span
-                        class="lesson-title">Múltiplos parâmetros</span><i class='bx bx-check-circle check-icon'></i>
+                        class="lesson-title">Parâmetros opcionais</span><i class='bx bx-check-circle check-icon'></i>
                 </div>
                 <div class="lesson-item" data-lesson="5.6"><span class="lesson-id">5.6</span><span
-                        class="lesson-title">Escopo local</span><i class='bx bx-check-circle check-icon'></i></div>
+                        class="lesson-title">Sobrecarga de métodos</span><i class='bx bx-check-circle check-icon'></i></div>
                 <div class="lesson-item" data-lesson="5.7"><span class="lesson-id">5.7</span><span
-                        class="lesson-title">Variáveis static</span><i class='bx bx-check-circle check-icon'></i></div>
-                <div class="lesson-item" data-lesson="5.8"><span class="lesson-id">5.8</span><span
-                        class="lesson-title">Protótipos</span><i class='bx bx-check-circle check-icon'></i></div>
-                <div class="lesson-item" data-lesson="5.9"><span class="lesson-id">5.9</span><span
                         class="lesson-title">Recursão</span><i class='bx bx-check-circle check-icon'></i></div>
+                <div class="lesson-item" data-lesson="5.8"><span class="lesson-id">5.8</span><span
+                        class="lesson-title">O que é uma Classe?</span><i class='bx bx-check-circle check-icon'></i></div>
+                <div class="lesson-item" data-lesson="5.9"><span class="lesson-id">5.9</span><span
+                        class="lesson-title">Atributos e Construtores</span><i class='bx bx-check-circle check-icon'></i></div>
                 <div class="lesson-item" data-lesson="5.10"><span class="lesson-id">5.10</span><span
-                        class="lesson-title">🎯 Projeto: Biblioteca Math</span><i
+                        class="lesson-title">🎯 Projeto: Biblioteca MathHelper</span><i
                         class='bx bx-check-circle check-icon'></i></div>
             </div>
         </section>
@@ -105,12 +105,12 @@
         </section>
         <nav class="level-bottom-nav">
             <a href="index.html" class="nav-btn"><i class='bx bx-home'></i> Menu</a>
-            <a href="level-6.html" class="nav-btn next"><span>Próximo: Ponteiros</span> <i
+            <a href="level-6.html" class="nav-btn next"><span>Próximo: POO</span> <i
                     class='bx bx-chevron-right'></i></a>
         </nav>
     </main>
     <footer>
-        <p>VibeCode_C# &copy; 2024 | Feito com ☕ e muito <code>Console.WriteLine</code></p>
+        <p>Aprender C# &copy; 2024 | Feito com ☕ e muito <code>Console.WriteLine</code></p>
     </footer>
     <div id="lesson-modal" class="modal">
         <div class="modal-overlay"></div>
