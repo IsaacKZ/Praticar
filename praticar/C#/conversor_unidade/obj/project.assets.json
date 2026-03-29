@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\isaac\\Praticar\\CsharpProjects\\TestProject\\TestProject.csproj",
-      "projectName": "TestProject",
-      "projectPath": "C:\\Users\\isaac\\Praticar\\CsharpProjects\\TestProject\\TestProject.csproj",
+      "projectUniqueName": "C:\\Users\\isaac\\Praticar\\praticar\\c#\\conversor_unidade\\conversor_unidade.csproj",
+      "projectName": "conversor_unidade",
+      "projectPath": "C:\\Users\\isaac\\Praticar\\praticar\\c#\\conversor_unidade\\conversor_unidade.csproj",
       "packagesPath": "C:\\Users\\isaac\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\isaac\\Praticar\\CsharpProjects\\TestProject\\obj\\",
+      "outputPath": "C:\\Users\\isaac\\Praticar\\praticar\\c#\\conversor_unidade\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\isaac\\AppData\\Roaming\\NuGet\\NuGet.Config"
