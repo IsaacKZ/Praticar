@@ -13,6 +13,12 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="assets/style.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- CodeMirror -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/mode/clike/clike.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/addon/edit/closebrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18/addon/edit/matchbrackets.min.js"></script>
 </head>
 
 <body>
@@ -25,6 +31,9 @@
                 <a href="level-6.html" class="level-nav-btn"><i class='bx bx-chevron-right'></i></a>
             </div>
             <div class="nav-right">
+                <a href="skills-map.html" class="editor-nav-btn" title="Mapa de Habilidades">
+                    <i class='bx bx-sitemap'></i>
+                </a>
                 <button class="editor-nav-btn" onclick="openEditor()" title="Editor de Código"><i
                         class='bx bx-code-alt'></i></button>
                 <div class="xp-display" onclick="openAchievements()">
@@ -61,7 +70,7 @@
                     5</span></div>
             <span class="level-tag ">Level 5</span>
             <h1>Funções</h1>
-            <p class="level-desc">MÃ©todos, parÃ¢metros, sobrecarga, recursÃ£o e introduÃ§Ã£o a classes.</p>
+            <p class="level-desc">Métodos, parâmetros, sobrecarga, recursão e introdução a classes.</p>
             <div class="level-progress-bar">
                 <span class="progress-text" data-level="5">0/10</span>
                 <div class="progress-bar large">
@@ -177,10 +186,8 @@
             <div class="editor-body">
                 <div class="code-editor">
                     <div class="editor-toolbar"><span>Program.cs</span><button class="run-btn" onclick="runCode()"><i
-                                class='bx bx-play'></i> Executar</button></div><textarea id='code-input'
-                        spellcheck='false'>using System;
-
-Console.WriteLine("Hello, World!");</textarea>
+                                class='bx bx-play'></i> Executar</button></div>
+                    <div id="cm-editor"></div>
                 </div>
                 <div class="editor-output">
                     <div class="output-header"><i class='bx bx-terminal'></i> Saída</div>
@@ -212,6 +219,28 @@ Console.WriteLine("Hello, World!");</textarea>
     </div>
     <div id="toast" class="toast"><i class='bx bx-check-circle'></i><span id="toast-message">Concluída!</span></div>
     <script src="script.js"></script>
+    <script>
+        (function initCodeMirror() {
+            var el = document.getElementById('cm-editor');
+            if (!el || typeof CodeMirror === 'undefined') return;
+            csharpEditor = CodeMirror(el, {
+                value: 'using System;\n\nConsole.WriteLine("Hello, World!");',
+                mode: 'text/x-csharp',
+                theme: 'vibecode',
+                lineNumbers: true,
+                autoCloseBrackets: true,
+                matchBrackets: true,
+                indentUnit: 4,
+                tabSize: 4,
+                indentWithTabs: false,
+                lineWrapping: false,
+                extraKeys: {
+                    'Tab': function (cm) { cm.replaceSelection('    '); },
+                    'Ctrl-Enter': runCode
+                }
+            });
+        })();
+    </script>
 </body>
 
 </html>

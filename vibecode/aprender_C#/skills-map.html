@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Habilidades | VibeCode C#</title>
+    <meta name="description"
+        content="Visualize sua jornada de aprendizado em C# com o mapa de habilidades dinâmico do VibeCode.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        /* ===== SKILLS MAP PAGE ===== */
+        .map-page {
+            min-height: 100vh;
+            background: var(--bg-dark);
+            padding-top: 70px;
+        }
+
+        .map-header {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+        }
+
+        .map-header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .map-header h1 span {
+            color: var(--primary);
+        }
+
+        .map-header p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .map-legend {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem auto 0;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .legend-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+        }
+
+        .legend-dot.locked {
+            background: #2a2a3a;
+            border: 2px solid #3a3a4a;
+        }
+
+        .legend-dot.progress {
+            background: rgba(123, 47, 255, 0.3);
+            border: 2px solid var(--primary);
+        }
+
+        .legend-dot.done {
+            background: var(--primary);
+            box-shadow: 0 0 8px var(--primary);
+        }
+
+        .legend-dot.master {
+            background: linear-gradient(135deg, var(--primary), #00D4FF);
+            box-shadow: 0 0 12px var(--primary);
+        }
+
+        /* MAP CANVAS */
+        .map-canvas-wrapper {
+            position: relative;
+            overflow-x: auto;
+            overflow-y: visible;
+            padding: 2rem 1rem 4rem;
+        }
+
+        .map-canvas {
+            position: relative;
+            margin: 0 auto;
+            width: 900px;
+            min-height: 900px;
+        }
+
+        /* SVG connections */
+        .map-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: visible;
+        }
+
+        .map-svg path {
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        .map-svg path.locked {
+            stroke: rgba(255, 255, 255, 0.06);
+        }
+
+        .map-svg path.progress {
+            stroke: rgba(123, 47, 255, 0.4);
+            stroke-dasharray: 6 4;
+            animation: dash 1.5s linear infinite;
+        }
+
+        .map-svg path.done {
+            stroke: rgba(123, 47, 255, 0.6);
+        }
+
+        .map-svg path.master {
+            stroke: url(#masterGrad);
+        }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: -20;
+            }
+        }
+
+        /* NODES */
+        .skill-node {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .skill-node:hover {
+            transform: translate(-50%, -50%) scale(1.08);
+        }
+
+        .skill-node:hover .node-tooltip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-4px);
+        }
+
+        .node-circle {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .node-circle::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        /* NODE STATES */
+        .skill-node.locked .node-circle {
+            background: #111120;
+            border: 2px solid rgba(255, 255, 255, 0.06);
+            filter: grayscale(1);
+            opacity: 0.5;
+        }
+
+        .skill-node.in-progress .node-circle {
+            background: rgba(123, 47, 255, 0.15);
+            border: 2px solid rgba(123, 47, 255, 0.5);
+        }
+
+        .skill-node.in-progress .node-circle::after {
+            background: radial-gradient(circle, rgba(123, 47, 255, 0.3) 0%, transparent 70%);
+            opacity: 1;
+            inset: -8px;
+            animation: pulse-ring 2s ease-in-out infinite;
+        }
+
+        .skill-node.completed .node-circle {
+            background: rgba(123, 47, 255, 0.25);
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 20px rgba(123, 47, 255, 0.5), 0 0 40px rgba(123, 47, 255, 0.2);
+        }
+
+        .skill-node.mastered .node-circle {
+            background: linear-gradient(135deg, rgba(123, 47, 255, 0.4), rgba(0, 212, 255, 0.2));
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 30px rgba(123, 47, 255, 0.7), 0 0 60px rgba(123, 47, 255, 0.3);
+            animation: master-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-ring {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scale(1.3);
+                opacity: 0.1;
+            }
+        }
+
+        @keyframes master-glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 30px rgba(123, 47, 255, 0.7), 0 0 60px rgba(123, 47, 255, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(0, 212, 255, 0.7), 0 0 80px rgba(0, 212, 255, 0.3);
+            }
+        }
+
+        /* Node label */
+        .node-label {
+            margin-top: 0.6rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-align: center;
+            max-width: 90px;
+            line-height: 1.3;
+            color: var(--text-secondary);
+        }
+
+        .skill-node.completed .node-label,
+        .skill-node.mastered .node-label {
+            color: var(--text-main);
+        }
+
+        .skill-node.locked .node-label {
+            color: var(--text-dim);
+        }
+
+        /* Progress badge */
+        .node-badge {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            background: var(--primary);
+            color: #fff;
+            font-family: var(--font-code);
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 2px 5px;
+            border-radius: 8px;
+            white-space: nowrap;
+            box-shadow: 0 2px 8px rgba(123, 47, 255, 0.5);
+        }
+
+        .skill-node.locked .node-badge {
+            display: none;
+        }
+
+        /* Tooltip */
+        .node-tooltip {
+            position: absolute;
+            bottom: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%) translateY(0);
+            background: #1a1a2e;
+            border: 1px solid rgba(123, 47, 255, 0.3);
+            border-radius: 10px;
+            padding: 0.6rem 0.9rem;
+            white-space: nowrap;
+            font-size: 0.78rem;
+            color: var(--text-main);
+            opacity: 0;
+            transition: all 0.2s ease;
+            pointer-events: none;
+            z-index: 10;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        .node-tooltip strong {
+            color: var(--primary);
+        }
+
+        /* Stats bar */
+        .map-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 0 auto 1rem;
+            max-width: 700px;
+            flex-wrap: wrap;
+        }
+
+        .map-stat {
+            text-align: center;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            min-width: 120px;
+        }
+
+        .map-stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: var(--font-code);
+        }
+
+        .map-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-top: 0.2rem;
+        }
+
+        /* Back button */
+        .map-back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(123, 47, 255, 0.1);
+            border: 1px solid rgba(123, 47, 255, 0.3);
+            border-radius: 8px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            margin: 1rem auto;
+            display: flex;
+            width: fit-content;
+        }
+
+        .map-back-btn:hover {
+            background: rgba(123, 47, 255, 0.25);
+            border-color: var(--primary);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Nav -->
+    <nav class="main-nav">
+        <div class="nav-content">
+            <a href="index.html" class="logo">Vibe<span>Code</span>_C#</a>
+            <div class="nav-right">
+                <div class="xp-display">
+                    <span class="xp-badge" id="user-level-badge">Noob</span>
+                    <span class="xp-amount" id="xp-amount">0 XP</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="global-progress">
+        <div class="global-progress-fill" id="global-progress-fill"></div>
+    </div>
+
+    <div class="map-page">
+        <!-- Header -->
+        <div class="map-header">
+            <h1>Mapa de <span>Habilidades</span></h1>
+            <p>Sua jornada em C# — visualizada. Cada nó acende conforme você evolui.</p>
+
+            <div class="map-legend">
+                <div class="legend-item">
+                    <div class="legend-dot locked"></div> Bloqueado
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot progress"></div> Em progresso
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot done"></div> Completo
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot master"></div> Dominado
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="map-stats">
+            <div class="map-stat">
+                <div class="map-stat-value" id="stat-aulas">0</div>
+                <div class="map-stat-label">Aulas Completas</div>
+            </div>
+            <div class="map-stat">
+                <div class="map-stat-value" id="stat-levels">0</div>
+                <div class="map-stat-label">Levels Dominados</div>
+            </div>
+            <div class="map-stat">
+                <div class="map-stat-value" id="stat-xp">0</div>
+                <div class="map-stat-label">XP Total</div>
+            </div>
+            <div class="map-stat">
+                <div class="map-stat-value" id="stat-pct">0%</div>
+                <div class="map-stat-label">Conclusão</div>
+            </div>
+        </div>
+
+        <!-- Back link -->
+        <a href="index.html" class="map-back-btn">
+            <i class='bx bx-arrow-back'></i> Voltar ao Curso
+        </a>
+
+        <!-- MAP -->
+        <div class="map-canvas-wrapper">
+            <div class="map-canvas" id="map-canvas">
+                <!-- SVG connections drawn by JS -->
+                <svg class="map-svg" id="map-svg">
+                    <defs>
+                        <linearGradient id="masterGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#7B2FFF" />
+                            <stop offset="100%" style="stop-color:#00D4FF" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <!-- Nodes drawn by JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // ====================================================
+        //  SKILLS MAP
+        // ====================================================
+
+        // Node definitions: id, label, emoji, x, y (% of canvas), level, children
+        // Canvas is 900 x 900
+        const NODES = [
+            // Row 0 - root
+            { id: 'L0', label: 'Hello .NET', emoji: '🚀', x: 450, y: 70, level: 0 },
+            // Row 1
+            { id: 'L1', label: 'Variáveis & Tipos', emoji: '📦', x: 450, y: 190, level: 1 },
+            // Row 2 - split
+            { id: 'L2', label: 'Condicionais', emoji: '🔀', x: 270, y: 320, level: 2 },
+            { id: 'side-oop0', label: 'Ecossistema .NET', emoji: '🌐', x: 680, y: 320, level: -1 },
+            // Row 3
+            { id: 'L3', label: 'Loops', emoji: '🔁', x: 270, y: 450, level: 3 },
+            // Row 4
+            { id: 'L4', label: 'Arrays & Listas', emoji: '📋', x: 270, y: 570, level: 4 },
+            // Row 5 - come back center
+            { id: 'L5', label: 'Métodos & Funções', emoji: '⚙️', x: 450, y: 670, level: 5 },
+            // Row 6 - OOP
+            { id: 'L6', label: 'OOP & Classes', emoji: '🏛️', x: 450, y: 780, level: 6 },
+            // Row 7 - split again
+            { id: 'L7', label: 'Herança & Interfaces', emoji: '🧬', x: 270, y: 870, level: 7 },
+            { id: 'side-linq', label: 'LINQ Básico', emoji: '🔍', x: 680, y: 780, level: -1 },
+            // Row 8
+            { id: 'L8', label: 'Coleções & LINQ', emoji: '📊', x: 450, y: 960, level: 8 },
+            // Row 9
+            { id: 'L9', label: 'Async & Arquivos', emoji: '⚡', x: 450, y: 1060, level: 9 },
+            // Final
+            { id: 'MASTER', label: 'C# Master 🏆', emoji: '🏆', x: 450, y: 1160, level: -2 },
+        ];
+
+        const EDGES = [
+            ['L0', 'L1'],
+            ['L1', 'L2'], ['L1', 'side-oop0'],
+            ['L2', 'L3'],
+            ['L3', 'L4'],
+            ['L4', 'L5'],
+            ['L5', 'L6'], ['L5', 'side-linq'],
+            ['L6', 'L7'], ['L6', 'L8'],
+            ['L7', 'L8'],
+            ['side-linq', 'L8'],
+            ['L8', 'L9'],
+            ['L9', 'MASTER'],
+        ];
+
+        // ---- Read progress from storage (reuse script.js storage keys) ----
+        const PROG_KEY = 'vibecode_csharp_progress';
+        const XP_KEY = 'vibecode_csharp_xp';
+
+        function getProgress() {
+            try { return JSON.parse(localStorage.getItem(PROG_KEY) || '{}'); } catch (e) { return {}; }
+        }
+        function getXP() {
+            return parseInt(localStorage.getItem(XP_KEY) || '0');
+        }
+
+        function getLevelProgress(prog, lvl) {
+            return Object.keys(prog).filter(k => k.startsWith(lvl + '.')).length;
+        }
+
+        function getNodeState(node, prog) {
+            if (node.id === 'MASTER') {
+                // Unlock when level 9 is done
+                return getLevelProgress(prog, 9) === 10 ? 'mastered' : 'locked';
+            }
+            if (node.level === -1) {
+                // Side concept nodes: unlock when prior level data present
+                return Object.keys(prog).length > 0 ? 'completed' : 'locked';
+            }
+            if (node.level < 0) return 'locked';
+            const done = getLevelProgress(prog, node.level);
+            if (done === 0) {
+                // Unlock level 0 always
+                if (node.level === 0) return 'in-progress';
+                // Check if previous level has any progress
+                const prevDone = getLevelProgress(prog, node.level - 1);
+                return prevDone > 0 ? 'in-progress' : 'locked';
+            }
+            if (done >= 10) return 'completed';
+            return 'in-progress';
+        }
+
+        // ---- Build map ----
+        function buildMap() {
+            const prog = getProgress();
+            const xp = getXP();
+            const canvas = document.getElementById('map-canvas');
+            const svg = document.getElementById('map-svg');
+
+            const canvasH = 1250;
+            canvas.style.height = canvasH + 'px';
+            svg.setAttribute('viewBox', `0 0 900 ${canvasH}`);
+            svg.style.height = canvasH + 'px';
+
+            // Map node id -> state
+            const stateMap = {};
+            NODES.forEach(n => { stateMap[n.id] = getNodeState(n, prog); });
+
+            // Draw edges
+            EDGES.forEach(([from, to]) => {
+                const a = NODES.find(n => n.id === from);
+                const b = NODES.find(n => n.id === to);
+                if (!a || !b) return;
+                const state = (stateMap[to] === 'completed' || stateMap[to] === 'mastered') ? 'done'
+                    : (stateMap[to] === 'in-progress') ? 'progress'
+                        : 'locked';
+                const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                const cx = (a.x + b.x) / 2;
+                const d = `M ${a.x} ${a.y} C ${cx} ${a.y}, ${cx} ${b.y}, ${b.x} ${b.y}`;
+                path.setAttribute('d', d);
+                path.setAttribute('class', state);
+                svg.appendChild(path);
+            });
+
+            // Draw nodes
+            NODES.forEach(node => {
+                const state = stateMap[node.id];
+                const done = node.level >= 0 ? getLevelProgress(prog, node.level) : 0;
+                const el = document.createElement('div');
+                el.className = `skill-node ${state}`;
+                el.style.left = node.x + 'px';
+                el.style.top = node.y + 'px';
+
+                const badgeText = node.level >= 0 && done > 0 ? `${done}/10` : '';
+
+                el.innerHTML = `
+                <div class="node-circle">
+                    <span>${node.emoji}</span>
+                    ${badgeText ? `<span class="node-badge">${badgeText}</span>` : ''}
+                </div>
+                <div class="node-label">${node.label}</div>
+                <div class="node-tooltip">
+                    <strong>${node.label}</strong><br>
+                    ${node.level >= 0 ? `${done}/10 aulas • ` : ''}${state === 'completed' ? '✅ Completo' : state === 'mastered' ? '🏆 Dominado' : state === 'in-progress' ? '🔥 Em progresso' : '🔒 Bloqueado'}
+                </div>
+            `;
+
+                if (node.level >= 0 && state !== 'locked') {
+                    el.addEventListener('click', () => {
+                        window.location.href = `level-${node.level}.html`;
+                    });
+                }
+
+                canvas.appendChild(el);
+            });
+
+            // Stats
+            const totalDone = Object.keys(prog).length;
+            const levelsDone = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].filter(l => getLevelProgress(prog, l) === 10).length;
+            document.getElementById('stat-aulas').textContent = totalDone;
+            document.getElementById('stat-levels').textContent = levelsDone;
+            document.getElementById('stat-xp').textContent = xp;
+            document.getElementById('stat-pct').textContent = Math.round(totalDone / 100 * 100) + '%';
+
+            // Update common XP badge in nav
+            const badge = document.getElementById('user-level-badge');
+            const xpEl = document.getElementById('xp-amount');
+            if (badge && xpEl) {
+                xpEl.textContent = xp + ' XP';
+            }
+        }
+
+        buildMap();
+    </script>
+</body>
+
+</html>
