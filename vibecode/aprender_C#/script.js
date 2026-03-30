@@ -2252,6 +2252,32 @@ Console.WriteLine("Parabéns! Você domina C#!"); `,
     }
 };
 
+// ==================== BUG HUNTING DATA ====================
+const BUG_CHALLENGES = {
+    '0': {
+        title: "Bug no Hello World",
+        desc: "Este código deveria imprimir 'Olá Mundo', mas tem um erro de sintaxe.",
+        code: 'using system;\n\nConsole.WriteLine("Olá Mundo")',
+        solution: 'using System;\n\nConsole.WriteLine("Olá Mundo");',
+        hint: "Verifique as iniciais e o ponto e vírgula."
+    },
+    '1': {
+        title: "Erro de Tipagem",
+        desc: "Corrija o tipo da variável para que o código funcione.",
+        code: 'int nome = "Isaac";\nConsole.WriteLine(nome);',
+        solution: 'string nome = "Isaac";\nConsole.WriteLine(nome);',
+        hint: "Nomes são textos, não números inteiros."
+    },
+    '2': {
+        title: "Sinal Trocado",
+        desc: "O código deveria verificar se a idade é MAIOR ou igual a 18.",
+        code: 'int idade = 20;\nif (idade <= 18) {\n    Console.WriteLine("Maior");\n}',
+        solution: 'int idade = 20;\nif (idade >= 18) {\n    Console.WriteLine("Maior");\n}',
+        hint: "O sinal de menor está onde deveria estar o de maior."
+    }
+};
+
+
 
 // ==================== GLOBAL STATE ====================
 let currentLessonId = null;
@@ -2917,9 +2943,13 @@ function closeQuiz() {
 
 
 // ==================== CODE EDITOR ====================
+var csharpEditor = null; // CodeMirror instance - initialized in HTML (must be var, not let)
+
 function openEditor() {
     document.getElementById('editor-modal').classList.add('active');
     document.body.style.overflow = 'hidden';
+    // Refresh CodeMirror layout after modal becomes visible
+    if (csharpEditor) setTimeout(() => csharpEditor.refresh(), 50);
 }
 
 function closeEditor() {
@@ -2928,26 +2958,122 @@ function closeEditor() {
 }
 
 function runCode() {
-    const code = document.getElementById('code-input').value;
+    const code = csharpEditor ? csharpEditor.getValue() : document.getElementById('code-input')?.value || '';
     const output = document.getElementById('editor-output');
 
-    // Simulate compilation
-    output.textContent = '$ gcc main.c -o programa\n$ ./programa\n';
+    output.textContent = '> dotnet run\n';
 
-    // Simple pattern matching for common outputs
-    const printfMatch = code.match(/printf\s*\(\s*"([^"]*)"/g);
-    if (printfMatch) {
-        const outputs = printfMatch.map(p => {
-            let text = p.match(/"([^"]*)"/)[1];
-            text = text.replace(/\\n/g, '\n').replace(/\\t/g, '\t');
-            return text;
+    // --- C# Console.WriteLine / Console.Write simulator ---
+    const results = [];
+    const writeLineRe = /Console\.WriteLine\s*\(\s*(?:\$?"((?:[^"\\]|\\.)*)"|([^)]+))\s*\)/g;
+    const writeRe = /Console\.Write\s*\(\s*(?:\$?"((?:[^"\\]|\\.)*)"|([^)]+))\s*\)/g;
+
+    // Collect all Console.Write* calls in order using a unified pass
+    const unified = /Console\.Write(?:Line)?\s*\(/g;
+    let m;
+    const callPositions = [];
+    while ((m = unified.exec(code)) !== null) {
+        callPositions.push({ index: m.index, isLine: m[0].includes('Line') });
+    }
+
+    let hasOutput = false;
+    // Simple simulation: extract string literals from all Console.Write/WriteLine calls
+    const allRe = /Console\.Write(?:Line)?\s*\(\s*(?:\$?@?"((?:[^"\\]|\\.)*)"|([^)]+))\s*\)/g;
+    let match;
+    while ((match = allRe.exec(code)) !== null) {
+        const isLine = match[0].includes('WriteLine');
+        let text = match[1] !== undefined ? match[1] : (match[2] || '').trim();
+        // Unescape basic escapes
+        text = text.replace(/\\n/g, '\n').replace(/\\t/g, '\t').replace(/\\"/g, '"');
+        // Remove interpolation vars (show placeholder)
+        text = text.replace(/\{[^}]+\}/g, (v) => {
+            const varName = v.slice(1, -1).trim();
+            return varName;
         });
-        output.textContent += outputs.join('');
+        results.push(isLine ? text + '\n' : text);
+        hasOutput = true;
+    }
+
+    if (hasOutput) {
+        output.textContent += results.join('');
+    } else if (code.trim().length > 0) {
+        output.textContent += '(sem saída de console detectada)';
     } else {
-        output.textContent += '(sem saída)';
+        output.textContent += '(nenhum código para executar)';
     }
 
     showToast('Código executado!');
+}
+
+// ==================== BUG HUNTING SYSTEM ====================
+let currentBugLevel = null;
+
+function openBugHunt(level) {
+    const challenge = BUG_CHALLENGES[level];
+    if (!challenge) {
+        showToast("Desafio em desenvolvimento para este nível...");
+        return;
+    }
+
+    currentBugLevel = level;
+
+    // Configura o editor com o código bugado
+    if (csharpEditor) {
+        csharpEditor.setValue(challenge.code);
+    }
+
+    // Abre o modal do editor, mas com título e descrição de bug hunt
+    const modal = document.getElementById('editor-modal');
+    modal.querySelector('h2').innerHTML = "<i class='bx bx-bug'></i> Caça ao Bug";
+    modal.querySelector('.editor-desc').textContent = challenge.desc;
+
+    // Altera o botão de executar para verificar
+    const runBtn = modal.querySelector('.run-btn');
+    runBtn.innerHTML = "<i class='bx bx-check-shield'></i> Corrigir Bug";
+    runBtn.onclick = checkBugHunt;
+
+    openEditor();
+}
+
+function checkBugHunt() {
+    const challenge = BUG_CHALLENGES[currentBugLevel];
+    const userCode = csharpEditor.getValue().trim();
+    const solution = challenge.solution.trim();
+
+    // Limpeza básica para comparação flexível (remove espaços extras)
+    const cleanUser = userCode.replace(/\s+/g, ' ');
+    const cleanSolution = solution.replace(/\s+/g, ' ');
+
+    if (cleanUser === cleanSolution) {
+        const output = document.getElementById('editor-output');
+        output.textContent = "> dotnet run\nBug corrigido com sucesso! 🎉\n";
+        showToast("Parabéns! Você encontrou o bug! +50 XP");
+        addXP(50);
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 },
+            colors: ['#7B2FFF', '#00D4FF', '#ffffff']
+        });
+
+        // Volta o editor ao normal após 3 segundos
+        setTimeout(resetEditorToNormal, 3000);
+    } else {
+        const output = document.getElementById('editor-output');
+        output.textContent = "> dotnet run\nErro: O código ainda contém o bug ou foi alterado incorretamente.\n";
+        output.textContent += "\nDica: " + challenge.hint;
+        showToast("Ainda não está certo...");
+    }
+}
+
+function resetEditorToNormal() {
+    const modal = document.getElementById('editor-modal');
+    modal.querySelector('h2').innerHTML = "<i class='bx bx-code-alt'></i> Editor de Código C#";
+    modal.querySelector('.editor-desc').textContent = "Escreva e teste seu código C#!";
+    const runBtn = modal.querySelector('.run-btn');
+    runBtn.innerHTML = "<i class='bx bx-play'></i> Executar";
+    runBtn.onclick = runCode;
+    closeEditor();
 }
 
 // ==================== CODE CHALLENGES ====================

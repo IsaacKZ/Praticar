@@ -1309,6 +1309,29 @@ body.light-mode .terminal-header {
     transform: translateY(-1px);
 }
 
+.bug-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    background: #ff4757;
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-main);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    margin-top: 1rem;
+}
+
+.bug-btn:hover {
+    box-shadow: 0 5px 20px rgba(255, 71, 87, 0.3);
+    transform: translateY(-1px);
+}
+
+
 .quiz-btn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
@@ -2038,4 +2061,148 @@ body.light-mode .terminal-header {
 .challenge-btn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+}
+
+/* ===================================================
+   CODEMIRROR THEME: vibecode
+   Dark theme with C# / VS Code-style syntax colors
+   =================================================== */
+
+/* Wrapper overrides */
+#cm-editor {
+    min-height: 220px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.CodeMirror {
+    height: auto;
+    min-height: 220px;
+    font-family: var(--font-code) !important;
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
+    border-radius: 0 !important;
+}
+
+/* THEME: vibecode */
+.cm-s-vibecode.CodeMirror {
+    background: #080810;
+    color: #cdd6f4;
+    caret-color: #cba6f7;
+}
+
+.cm-s-vibecode .CodeMirror-gutters {
+    background: #0d0d1a;
+    border-right: 1px solid rgba(123, 47, 255, 0.15);
+}
+
+.cm-s-vibecode .CodeMirror-linenumber {
+    color: #45475a;
+    padding: 0 8px 0 4px;
+}
+
+.cm-s-vibecode .CodeMirror-cursor {
+    border-left: 2px solid #cba6f7;
+}
+
+.cm-s-vibecode .CodeMirror-selected {
+    background: rgba(123, 47, 255, 0.25) !important;
+}
+
+.cm-s-vibecode .CodeMirror-activeline-background {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* C# Syntax Colors */
+.cm-s-vibecode .cm-keyword {
+    color: #cba6f7;
+    font-weight: 600;
+}
+
+/* purple - class, using, void, new */
+.cm-s-vibecode .cm-def {
+    color: #89b4fa;
+}
+
+/* blue - method/type definitions   */
+.cm-s-vibecode .cm-type {
+    color: #89dceb;
+}
+
+/* cyan - int, string, bool, var     */
+.cm-s-vibecode .cm-variable {
+    color: #cdd6f4;
+}
+
+/* white - identifiers               */
+.cm-s-vibecode .cm-variable-2 {
+    color: #f38ba8;
+}
+
+/* red - special vars                */
+.cm-s-vibecode .cm-property {
+    color: #a6e3a1;
+}
+
+/* green - properties & methods      */
+.cm-s-vibecode .cm-string {
+    color: #a6e3a1;
+}
+
+/* green strings                     */
+.cm-s-vibecode .cm-string-2 {
+    color: #a6e3a1;
+}
+
+.cm-s-vibecode .cm-number {
+    color: #fab387;
+}
+
+/* orange - numbers                  */
+.cm-s-vibecode .cm-comment {
+    color: #585b70;
+    font-style: italic;
+}
+
+.cm-s-vibecode .cm-operator {
+    color: #89dceb;
+}
+
+/* cyan - operators =, +, =>         */
+.cm-s-vibecode .cm-punctuation {
+    color: #cdd6f4;
+}
+
+.cm-s-vibecode .cm-atom {
+    color: #f38ba8;
+}
+
+/* true, false, null                 */
+.cm-s-vibecode .cm-meta {
+    color: #cba6f7;
+}
+
+/* preprocessor                      */
+.cm-s-vibecode .cm-attribute {
+    color: #f9e2af;
+}
+
+/* yellow - [Attributes]             */
+.cm-s-vibecode .cm-builtin {
+    color: #89b4fa;
+}
+
+/* Scrollbar styling */
+.cm-s-vibecode .CodeMirror-scroll::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.cm-s-vibecode .CodeMirror-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.cm-s-vibecode .CodeMirror-scroll::-webkit-scrollbar-thumb {
+    background: rgba(123, 47, 255, 0.4);
+    border-radius: 3px;
 }
