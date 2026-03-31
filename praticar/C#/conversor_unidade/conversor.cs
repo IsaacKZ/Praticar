@@ -1,8 +1,17 @@
-﻿static void distancia() { // Função de conversão (distância)
-    Console.WriteLine("Digite um valor em KM's");
-    double quilometros = double.Parse(Console.ReadLine());
-    double metros = (quilometros * 1000);
-    Console.WriteLine($"O valor de {quilometros} em metros é: {metros}");
+static bool rodar = true;
+
+static void distancia() { // Função de conversão (distância)
+    try {
+        Console.WriteLine("Digite um valor em KM's");
+        double quilometros = double.Parse(Console.ReadLine());
+        double metros = (quilometros * 1000);
+        Console.WriteLine($"O valor de {quilometros} em metros é: {metros}");
+}   catch (FormatException) { // Tratamento de exceção
+        Console.WriteLine("Erro ao converter! Caractere inválido!");
+    }
+    catch (Exception erro) {
+        Console.WriteLine(erro.Message);
+    }
 }
 
 static void temperatura() { // Função de conversão (temperatura)
@@ -15,8 +24,8 @@ static void temperatura() { // Função de conversão (temperatura)
 }
 
 static void peso() {
-    Console.WriteLine("Digite o peso em gramas")
-    int gramas = int.Parse(Console.ReadLine());
+    Console.WriteLine("Digite o peso em gramas");
+    double gramas = double.Parse(Console.ReadLine());
     double quilogramas = (gramas / 1000);
     double libras = (gramas / 453.592);
     Console.WriteLine($"O valor de gramas ({gramas}) em quilogramas é: {quilogramas:F2}");
@@ -32,13 +41,13 @@ static void velocidade() {
     if (escolha == 1) {
         Console.WriteLine("Digite a velocidade! (metros/s)");
         double velocidade = double.Parse(Console.ReadLine());
-        Console.WriteLine($"Sua velocidade em km/h é {(velocidade * 3.6)}!!")
+        Console.WriteLine($"Sua velocidade em km/h é {(velocidade * 3.6)}!!");
     }
 
     else if (escolha == 2) {
-        Console.WriteLine("Digite a velocidade! (Km/h)")
+        Console.WriteLine("Digite a velocidade! (Km/h)");
         double velocidade = double.Parse(Console.ReadLine());
-        Console.WriteLine($"Sua velocidade em metros/s é {(velocidade / 3.6)}!!")
+        Console.WriteLine($"Sua velocidade em metros/s é {(velocidade / 3.6)}!!");
     }
 }
 
@@ -47,12 +56,15 @@ static void menu() { // Menu
     Console.WriteLine("0 - Sair do programa");
     Console.WriteLine("1 - Conversor de distâncias");
     Console.WriteLine("2 - Conversor de temperatura");
+    Console.WriteLine("3 - Conversor de peso");
+    Console.WriteLine("4 - Conversor de velocidade");
     Console.WriteLine("Escolha um (Use apenas número");
     int escolha = int.Parse(Console.ReadLine());
 
     switch (escolha) {
 
         case 0:
+            rodar = false;
             break;
 
         case 1:
@@ -63,12 +75,21 @@ static void menu() { // Menu
             temperatura();
             break;
 
+        case 3:
+            peso();
+            break;
+
+        case 4:
+            velocidade();
+            break;
+
         default:
             Console.WriteLine("Algo deu errado! Tente novamente!");
             break;
     }
 }
 
-while (true) { // Sempre chama o menu quando sai das funções
+
+while (rodar == true) { // Sempre chama o menu quando sai das funções
     menu();
 }
