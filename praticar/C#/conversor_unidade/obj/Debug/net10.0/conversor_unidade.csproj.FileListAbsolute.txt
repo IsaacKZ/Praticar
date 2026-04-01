@@ -1,0 +1,5 @@
+c:\Users\isaac\Praticar\praticar\C#\conversor_unidade\obj\Debug\net10.0\conversor_unidade.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\isaac\Praticar\praticar\C#\conversor_unidade\obj\Debug\net10.0\conversor_unidade.AssemblyInfoInputs.cache
+c:\Users\isaac\Praticar\praticar\C#\conversor_unidade\obj\Debug\net10.0\conversor_unidade.AssemblyInfo.cs
+c:\Users\isaac\Praticar\praticar\C#\conversor_unidade\obj\Debug\net10.0\conversor_unidade.csproj.CoreCompileInputs.cache
+c:\Users\isaac\Praticar\praticar\C#\conversor_unidade\obj\Debug\net10.0\conversor_unidade.sourcelink.json

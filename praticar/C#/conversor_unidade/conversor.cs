@@ -15,77 +15,106 @@ static void distancia() { // Função de conversão (distância)
 }
 
 static void temperatura() { // Função de conversão (temperatura)
-    Console.WriteLine("Digite uma temperatura em Celsius");
-    double celsius = double.Parse(Console.ReadLine());
-    double fahrenheit = (celsius * 1.8 + 32);
-    double kelvin = (celsius + 273.15);
-    Console.WriteLine($"O valor de {celsius} em celsius para fahrenheit é {fahrenheit}");
-    Console.WriteLine($"O valor de {celsius} em celsius para Kelvin é {kelvin}");
+    try {
+        Console.WriteLine("Digite uma temperatura em Celsius");
+        double celsius = double.Parse(Console.ReadLine());
+        double fahrenheit = (celsius * 1.8 + 32);
+        double kelvin = (celsius + 273.15);
+        Console.WriteLine($"O valor de {celsius} em celsius para fahrenheit é {fahrenheit}");
+        Console.WriteLine($"O valor de {celsius} em celsius para Kelvin é {kelvin}");
+}   catch (FormatException) { // Tratamento de exceção
+        Console.WriteLine("Erro ao converter! Caractere inválido!");
+    }
+    catch (Exception erro) {
+        Console.WriteLine(erro.Message);
+    }
 }
 
 static void peso() {
-    Console.WriteLine("Digite o peso em gramas");
-    double gramas = double.Parse(Console.ReadLine());
-    double quilogramas = (gramas / 1000);
-    double libras = (gramas / 453.592);
-    Console.WriteLine($"O valor de gramas ({gramas}) em quilogramas é: {quilogramas:F2}");
-    Console.WriteLine($"O valor de gramas ({gramas}) em libras é: {libras:F2}");
+    try {
+        Console.WriteLine("Digite o peso em gramas");
+        double gramas = double.Parse(Console.ReadLine());
+        double quilogramas = (gramas / 1000);
+        double libras = (gramas / 453.592);
+        double toneladas = (quilogramas / 1000);
+        Console.WriteLine($"O valor de gramas ({gramas}) em quilogramas é: {quilogramas:F2}");
+        Console.WriteLine($"O valor de gramas ({gramas}) em libras é: {libras:F2}");
+        Console.WriteLine($"O valor de gramas ({gramas}) em toneladas é: {toneladas:F2}");
+}   catch (FormatException) { // Tratamento de exceção
+        Console.WriteLine("Erro ao converter! Caractere inválido!");
+    }
+    catch (Exception erro) {
+        Console.WriteLine(erro.Message);
+    }
 }
 
+
 static void velocidade() {
-    Console.WriteLine("A velocidade para ser convertida é em metros/s ou km/h?");
-    Console.WriteLine("1 - Metros por Segundo");
-    Console.WriteLine("2 - Quilometros por hora");
-    int escolha = int.Parse(Console.ReadLine());
+    try {
+        Console.WriteLine("A velocidade para ser convertida é em metros/s ou km/h?");
+        Console.WriteLine("1 - Metros por Segundo");
+        Console.WriteLine("2 - Quilometros por hora");
+        int escolha = int.Parse(Console.ReadLine());
 
-    if (escolha == 1) {
-        Console.WriteLine("Digite a velocidade! (metros/s)");
-        double velocidade = double.Parse(Console.ReadLine());
-        Console.WriteLine($"Sua velocidade em km/h é {(velocidade * 3.6)}!!");
-    }
-
-    else if (escolha == 2) {
-        Console.WriteLine("Digite a velocidade! (Km/h)");
-        double velocidade = double.Parse(Console.ReadLine());
-        Console.WriteLine($"Sua velocidade em metros/s é {(velocidade / 3.6)}!!");
+        if (escolha == 1) {
+            Console.WriteLine("Digite a velocidade! (metros/s)");
+            double velocidade = double.Parse(Console.ReadLine());
+            Console.WriteLine($"Sua velocidade em km/h é {(velocidade * 3.6)}!!");
+        } else if (escolha == 2) {
+            Console.WriteLine("Digite a velocidade! (Km/h)");
+            double velocidade = double.Parse(Console.ReadLine());
+            Console.WriteLine($"Sua velocidade em metros/s é {(velocidade / 3.6)}!!");
+        } else {
+            Console.WriteLine("Opção inválida! Escolha 1 ou 2.");
+        }
+    } catch (FormatException) {
+        Console.WriteLine("Erro ao converter! Caractere inválido!");
+    } catch (Exception erro) {
+        Console.WriteLine(erro.Message);
     }
 }
 
 static void menu() { // Menu
-    Console.WriteLine("Escolha uma função!\n");
-    Console.WriteLine("0 - Sair do programa");
-    Console.WriteLine("1 - Conversor de distâncias");
-    Console.WriteLine("2 - Conversor de temperatura");
-    Console.WriteLine("3 - Conversor de peso");
-    Console.WriteLine("4 - Conversor de velocidade");
-    Console.WriteLine("Escolha um (Use apenas número");
-    int escolha = int.Parse(Console.ReadLine());
+    try {
+        Console.WriteLine("Escolha uma função!\n");
+        Console.WriteLine("0 - Sair do programa");
+        Console.WriteLine("1 - Conversor de distâncias");
+        Console.WriteLine("2 - Conversor de temperatura");
+        Console.WriteLine("3 - Conversor de peso");
+        Console.WriteLine("4 - Conversor de velocidade");
+        Console.WriteLine("Escolha um (Use apenas número");
+        int escolha = int.Parse(Console.ReadLine());
 
-    switch (escolha) {
+        switch (escolha) {
 
-        case 0:
-            rodar = false;
-            break;
+            case 0:
+                rodar = false;
+                break;
 
-        case 1:
-            distancia();
-            break;
-        
-        case 2:
-            temperatura();
-            break;
+            case 1:
+                distancia();
+                break;
 
-        case 3:
-            peso();
-            break;
+            case 2:
+                temperatura();
+                break;
 
-        case 4:
-            velocidade();
-            break;
+            case 3:
+                peso();
+                break;
 
-        default:
-            Console.WriteLine("Algo deu errado! Tente novamente!");
-            break;
+            case 4:
+                velocidade();
+                break;
+
+            default:
+                Console.WriteLine("Algo deu errado! Tente novamente!");
+                break;
+        }
+    } catch (FormatException) {
+        Console.WriteLine("Erro ao converter! Caractere inválido!");
+    } catch (Exception erro) {
+        Console.WriteLine(erro.Message);
     }
 }
 
