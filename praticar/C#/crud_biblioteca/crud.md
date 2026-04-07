@@ -1,0 +1,1 @@
+este programa tem a finalidade de aprimorar meus conhecimentos em POO e me acostumar com a sintaxe de C#. no momento, é o meu segundo projeto em C#.
