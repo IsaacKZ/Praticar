@@ -1,9 +1,10 @@
-static bool rodar = true;
+bool rodar = true;
 
-static void distancia() { // Função de conversão (distância)
+// Converte quilometros para metros.
+void distancia() { // Função de conversão (distância)
     try {
         Console.WriteLine("Digite um valor em KM's");
-        double quilometros = double.Parse(Console.ReadLine());
+        double quilometros = double.Parse(Console.ReadLine()!);
         double metros = (quilometros * 1000);
         Console.WriteLine($"O valor de {quilometros} em metros é: {metros}");
 }   catch (FormatException) { // Tratamento de exceção
@@ -14,10 +15,11 @@ static void distancia() { // Função de conversão (distância)
     }
 }
 
-static void temperatura() { // Função de conversão (temperatura)
+// Converte celsius para fahrenheit e kelvin.
+void temperatura() { // Função de conversão (temperatura)
     try {
         Console.WriteLine("Digite uma temperatura em Celsius");
-        double celsius = double.Parse(Console.ReadLine());
+        double celsius = double.Parse(Console.ReadLine()!);
         double fahrenheit = (celsius * 1.8 + 32);
         double kelvin = (celsius + 273.15);
         Console.WriteLine($"O valor de {celsius} em celsius para fahrenheit é {fahrenheit}");
@@ -30,10 +32,11 @@ static void temperatura() { // Função de conversão (temperatura)
     }
 }
 
-static void peso() {
+// Converte gramas para outras unidades de massa.
+void peso() {
     try {
         Console.WriteLine("Digite o peso em gramas");
-        double gramas = double.Parse(Console.ReadLine());
+        double gramas = double.Parse(Console.ReadLine()!);
         double quilogramas = (gramas / 1000);
         double libras = (gramas / 453.592);
         double toneladas = (quilogramas / 1000);
@@ -49,20 +52,21 @@ static void peso() {
 }
 
 
-static void velocidade() {
+// Converte velocidade entre m/s e km/h.
+void velocidade() {
     try {
         Console.WriteLine("A velocidade para ser convertida é em metros/s ou km/h?");
         Console.WriteLine("1 - Metros por Segundo");
         Console.WriteLine("2 - Quilometros por hora");
-        int escolha = int.Parse(Console.ReadLine());
+        int escolha = int.Parse(Console.ReadLine()!);
 
         if (escolha == 1) {
             Console.WriteLine("Digite a velocidade! (metros/s)");
-            double velocidade = double.Parse(Console.ReadLine());
+            double velocidade = double.Parse(Console.ReadLine()!);
             Console.WriteLine($"Sua velocidade em km/h é {(velocidade * 3.6)}!!");
         } else if (escolha == 2) {
             Console.WriteLine("Digite a velocidade! (Km/h)");
-            double velocidade = double.Parse(Console.ReadLine());
+            double velocidade = double.Parse(Console.ReadLine()!);
             Console.WriteLine($"Sua velocidade em metros/s é {(velocidade / 3.6)}!!");
         } else {
             Console.WriteLine("Opção inválida! Escolha 1 ou 2.");
@@ -74,7 +78,9 @@ static void velocidade() {
     }
 }
 
-static void menu() { // Menu
+
+// Exibe o menu principal e chama a função escolhida.
+void menu() { // Menu
     try {
         Console.WriteLine("Escolha uma função!\n");
         Console.WriteLine("0 - Sair do programa");
@@ -83,7 +89,7 @@ static void menu() { // Menu
         Console.WriteLine("3 - Conversor de peso");
         Console.WriteLine("4 - Conversor de velocidade");
         Console.WriteLine("Escolha um (Use apenas número");
-        int escolha = int.Parse(Console.ReadLine());
+        int escolha = int.Parse(Console.ReadLine()!);
 
         switch (escolha) {
 
@@ -120,5 +126,6 @@ static void menu() { // Menu
 
 
 while (rodar == true) { // Sempre chama o menu quando sai das funções
+    // Mantém o programa ativo até o usuário escolher sair.
     menu();
 }
