@@ -4,14 +4,14 @@ bool rodar = true;
 void distancia() { // Função de conversão (distância)
     try {
         Console.WriteLine("Digite um valor em KM's");
-        double quilometros = double.Parse(Console.ReadLine()!);
+        double quilometros = double.Parse(Console.ReadLine()!); // Parse é a conversão de tipos de dados
         double metros = (quilometros * 1000);
         Console.WriteLine($"O valor de {quilometros} em metros é: {metros}");
 }   catch (FormatException) { // Tratamento de exceção
         Console.WriteLine("Erro ao converter! Caractere inválido!");
     }
-    catch (Exception erro) {
-        Console.WriteLine(erro.Message);
+    catch (Exception erro) { // outras exceções
+        Console.WriteLine(erro.Message); // mostra uma mensagem sobre o erro
     }
 }
 
@@ -40,7 +40,7 @@ void peso() {
         double quilogramas = (gramas / 1000);
         double libras = (gramas / 453.592);
         double toneladas = (quilogramas / 1000);
-        Console.WriteLine($"O valor de gramas ({gramas}) em quilogramas é: {quilogramas:F2}");
+        Console.WriteLine($"O valor de gramas ({gramas}) em quilogramas é: {quilogramas:F2}"); // :F2 é formatação. O número pode conter até 2 digitos depois da vírgula
         Console.WriteLine($"O valor de gramas ({gramas}) em libras é: {libras:F2}");
         Console.WriteLine($"O valor de gramas ({gramas}) em toneladas é: {toneladas:F2}");
 }   catch (FormatException) { // Tratamento de exceção
