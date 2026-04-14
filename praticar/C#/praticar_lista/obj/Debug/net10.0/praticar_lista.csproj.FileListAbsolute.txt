@@ -1,0 +1,15 @@
+C:\Users\isaac\Praticar\praticar\C#\praticar_lista\obj\Debug\net10.0\praticar_lista.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\isaac\Praticar\praticar\C#\praticar_lista\obj\Debug\net10.0\praticar_lista.AssemblyInfoInputs.cache
+C:\Users\isaac\Praticar\praticar\C#\praticar_lista\obj\Debug\net10.0\praticar_lista.AssemblyInfo.cs
+C:\Users\isaac\Praticar\praticar\C#\praticar_lista\obj\Debug\net10.0\praticar_lista.csproj.CoreCompileInputs.cache
+C:\Users\isaac\Praticar\praticar\C#\praticar_lista\obj\Debug\net10.0\praticar_lista.sourcelink.json
+C:\Users\isaac\Praticar\praticar\C#\praticar_lista\bin\Debug\net10.0\praticar_lista.exe
+C:\Users\isaac\Praticar\praticar\C#\praticar_lista\bin\Debug\net10.0\praticar_lista.deps.json
+C:\Users\isaac\Praticar\praticar\C#\praticar_lista\bin\Debug\net10.0\praticar_lista.runtimeconfig.json
+C:\Users\isaac\Praticar\praticar\C#\praticar_lista\bin\Debug\net10.0\praticar_lista.dll
+C:\Users\isaac\Praticar\praticar\C#\praticar_lista\bin\Debug\net10.0\praticar_lista.pdb
+C:\Users\isaac\Praticar\praticar\C#\praticar_lista\obj\Debug\net10.0\praticar_lista.dll
+C:\Users\isaac\Praticar\praticar\C#\praticar_lista\obj\Debug\net10.0\refint\praticar_lista.dll
+C:\Users\isaac\Praticar\praticar\C#\praticar_lista\obj\Debug\net10.0\praticar_lista.pdb
+C:\Users\isaac\Praticar\praticar\C#\praticar_lista\obj\Debug\net10.0\praticar_lista.genruntimeconfig.cache
+C:\Users\isaac\Praticar\praticar\C#\praticar_lista\obj\Debug\net10.0\ref\praticar_lista.dll

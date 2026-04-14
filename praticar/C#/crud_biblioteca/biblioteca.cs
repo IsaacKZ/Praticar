@@ -49,7 +49,7 @@ void listar_livros() {
 void remover_livro() {
     listar_livros();
     Console.WriteLine("Escolha um livro para remover (0 para cancelar)");
-        int escolha = int.Parse(Console.ReadLine());
+        int escolha = int.Parse(Console.ReadLine()!);
 
         if (escolha == 0) {
             return;
@@ -64,3 +64,8 @@ void remover_livro() {
             return;
         }
     }
+
+adicionar_livro();
+listar_livros();
+remover_livro();
+listar_livros();

@@ -3,3 +3,13 @@ c:\Users\isaac\Praticar\praticar\C#\conversor_unidade\obj\Debug\net10.0\converso
 c:\Users\isaac\Praticar\praticar\C#\conversor_unidade\obj\Debug\net10.0\conversor_unidade.AssemblyInfo.cs
 c:\Users\isaac\Praticar\praticar\C#\conversor_unidade\obj\Debug\net10.0\conversor_unidade.csproj.CoreCompileInputs.cache
 c:\Users\isaac\Praticar\praticar\C#\conversor_unidade\obj\Debug\net10.0\conversor_unidade.sourcelink.json
+C:\Users\isaac\Praticar\praticar\C#\conversor_unidade\bin\Debug\net10.0\conversor_unidade.exe
+C:\Users\isaac\Praticar\praticar\C#\conversor_unidade\bin\Debug\net10.0\conversor_unidade.deps.json
+C:\Users\isaac\Praticar\praticar\C#\conversor_unidade\bin\Debug\net10.0\conversor_unidade.runtimeconfig.json
+C:\Users\isaac\Praticar\praticar\C#\conversor_unidade\bin\Debug\net10.0\conversor_unidade.dll
+C:\Users\isaac\Praticar\praticar\C#\conversor_unidade\bin\Debug\net10.0\conversor_unidade.pdb
+C:\Users\isaac\Praticar\praticar\C#\conversor_unidade\obj\Debug\net10.0\conversor_unidade.dll
+C:\Users\isaac\Praticar\praticar\C#\conversor_unidade\obj\Debug\net10.0\refint\conversor_unidade.dll
+C:\Users\isaac\Praticar\praticar\C#\conversor_unidade\obj\Debug\net10.0\conversor_unidade.pdb
+C:\Users\isaac\Praticar\praticar\C#\conversor_unidade\obj\Debug\net10.0\conversor_unidade.genruntimeconfig.cache
+C:\Users\isaac\Praticar\praticar\C#\conversor_unidade\obj\Debug\net10.0\ref\conversor_unidade.dll

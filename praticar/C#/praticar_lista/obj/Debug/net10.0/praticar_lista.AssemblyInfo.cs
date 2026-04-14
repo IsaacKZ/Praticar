@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("conversor_unidade")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("praticar_lista")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7aee019b44833ca931b693e6b4b7aa5283cfc284")]
-[assembly: System.Reflection.AssemblyProductAttribute("conversor_unidade")]
-[assembly: System.Reflection.AssemblyTitleAttribute("conversor_unidade")]
+[assembly: System.Reflection.AssemblyProductAttribute("praticar_lista")]
+[assembly: System.Reflection.AssemblyTitleAttribute("praticar_lista")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Gerado pela classe WriteCodeFragment do MSBuild.
