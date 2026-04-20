@@ -1,4 +1,4 @@
-// arquivo pra eu treinar lista em C#
+﻿// arquivo pra eu treinar lista em C#
 
 List<string> pessoas = new List<string>(); // declarando variavel lista
 bool rodando = true;
@@ -14,7 +14,7 @@ void listar_pessoas() // Mostrar todas as pessoas na lista
 int selecionar_pessoa()
 {
     listar_pessoas();
-    int pos = int.Parse(Console.ReadLine());
+    int pos = int.Parse(Console.ReadLine()!);
     return pos;
 }
 
@@ -58,11 +58,11 @@ void modificar_pessoa() // Modificar uma pessoa existente na lista
     else
     {
         Console.WriteLine("Digite o novo nome da pessoa: (Digite 0 para cancelar) ");
-        string novo_nome = Console.ReadLine();
+        string novo_nome = Console.ReadLine()!;
 
         if (novo_nome != "0")
         {
-            pessoas[pos - 1] = novo_nome;
+            pessoas[pos - 1] = novo_nome!;
             Console.WriteLine("Pessoa modificada com sucesso!");
         }
         else
@@ -81,7 +81,7 @@ void menu() // Menu para escolher o que fazer
     Console.WriteLine("3 - Modificar pessoas");
     Console.WriteLine("4 - Listar pessoas");
     Console.WriteLine("5 - Sair do programa");
-    int escolha = int.Parse(Console.ReadLine());
+    int escolha = int.Parse(Console.ReadLine()!);
 
     switch (escolha)
     {
