@@ -15,6 +15,7 @@ void listar_pessoas() { // Mostrar todas as pessoas na lista
     }
     catch (Exception.erro)
     {
+        Console.WriteLine(erro.Message);
         Console.WriteLine("Erro! Retornando ao menu...");
         return;
     }
@@ -82,26 +83,33 @@ void modificar_pessoa() { // Modificar uma pessoa existente na lista{ try
             return;
         }
 
-    else
-    {
-        Console.WriteLine("Digite o novo nome da pessoa: (Digite 0 para cancelar) ");
-        string novo_nome = Console.ReadLine()!;
-
-        if (novo_nome != "0")
-        {
-            pessoas[pos - 1] = novo_nome!;
-            Console.WriteLine("Pessoa modificada com sucesso!");
-        }
         else
         {
-            Console.WriteLine("Retornando ao menu...");
-            return;
+            Console.WriteLine("Digite o novo nome da pessoa: (Digite 0 para cancelar) ");
+            string novo_nome = Console.ReadLine()!;
+
+            if (novo_nome != "0")
+            {
+                pessoas[pos - 1] = novo_nome!;
+                Console.WriteLine("Pessoa modificada com sucesso!");
+            }
+            else
+            {
+                Console.WriteLine("Retornando ao menu...");
+                return;
+            }
         }
+    }
+    catch (Exception.erro)
+    {
+        Console.WriteLine(erro.Message);
+        Console.WriteLine("Erro! Retornando ao menu...");
+        return;
     }
 }
 
 void menu() // Menu para escolher o que fazer
-{
+{ try {
     Console.WriteLine("--- MENU ---");
     Console.WriteLine("1 - Adicionar pessoas");
     Console.WriteLine("2 - Remover pessoas");
