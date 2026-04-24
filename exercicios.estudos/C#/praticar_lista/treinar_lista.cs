@@ -3,17 +3,16 @@
 List<string> pessoas = new List<string>(); // declarando variavel lista
 bool rodando = true;
 
-void listar_pessoas() { // Mostrar todas as pessoas na lista
+void listar_pessoas() // Mostrar todas as pessoas na lista
+{
     try
     {
+        for (int i = 0; i < pessoas.Count; i++)
         {
-            for (int i = 0; i < pessoas.Count; i++)
-            {
-                Console.WriteLine($"{i + 1} - {pessoas[i]}");
-            }
+            Console.WriteLine($"{i + 1} - {pessoas[i]}");
         }
     }
-    catch (Exception.erro)
+    catch (Exception erro)
     {
         Console.WriteLine(erro.Message);
         Console.WriteLine("Erro! Retornando ao menu...");
@@ -28,7 +27,7 @@ int selecionar_pessoa()
     return pos;
 }
 
-void adicionar_pessoas()  // adicionar pessoas na lista 
+void adicionar_pessoas() // adicionar pessoas na lista
 {
     try
     {
@@ -38,7 +37,7 @@ void adicionar_pessoas()  // adicionar pessoas na lista
         Console.WriteLine("Pessoa adicionada com sucesso! Lista atualizada:");
         listar_pessoas();
     }
-    catch (Exception.erro)
+    catch (Exception erro)
     {
         Console.WriteLine(erro.Message);
         Console.WriteLine("Erro! Retornando ao menu...");
@@ -46,7 +45,8 @@ void adicionar_pessoas()  // adicionar pessoas na lista
     }
 }
 
-void remover_pessoas() { // Remover pessoas da lista
+void remover_pessoas() // Remover pessoas da lista
+{
     try
     {
         Console.WriteLine("Digite o número da pessoa que deseja remover: ");
@@ -64,7 +64,7 @@ void remover_pessoas() { // Remover pessoas da lista
             listar_pessoas();
         }
     }
-    catch (Exception.erro)
+    catch (Exception erro)
     {
         Console.WriteLine(erro.Message);
         Console.WriteLine("Erro! Retornando ao menu...");
@@ -72,7 +72,8 @@ void remover_pessoas() { // Remover pessoas da lista
     }
 }
 
-void modificar_pessoa() { // Modificar uma pessoa existente na lista{ try
+void modificar_pessoa() // Modificar uma pessoa existente na lista
+{
     try
     {
         int pos = selecionar_pessoa();
@@ -82,7 +83,6 @@ void modificar_pessoa() { // Modificar uma pessoa existente na lista{ try
             Console.WriteLine("Erro! Retornando ao menu...");
             return;
         }
-
         else
         {
             Console.WriteLine("Digite o novo nome da pessoa: (Digite 0 para cancelar) ");
@@ -100,7 +100,7 @@ void modificar_pessoa() { // Modificar uma pessoa existente na lista{ try
             }
         }
     }
-    catch (Exception.erro)
+    catch (Exception erro)
     {
         Console.WriteLine(erro.Message);
         Console.WriteLine("Erro! Retornando ao menu...");
@@ -109,14 +109,16 @@ void modificar_pessoa() { // Modificar uma pessoa existente na lista{ try
 }
 
 void menu() // Menu para escolher o que fazer
-{ try {
-    Console.WriteLine("--- MENU ---");
-    Console.WriteLine("1 - Adicionar pessoas");
-    Console.WriteLine("2 - Remover pessoas");
-    Console.WriteLine("3 - Modificar pessoas");
-    Console.WriteLine("4 - Listar pessoas");
-    Console.WriteLine("5 - Sair do programa");
-    int escolha = int.Parse(Console.ReadLine()!);
+{
+    try
+    {
+        Console.WriteLine("--- MENU ---");
+        Console.WriteLine("1 - Adicionar pessoas");
+        Console.WriteLine("2 - Remover pessoas");
+        Console.WriteLine("3 - Modificar pessoas");
+        Console.WriteLine("4 - Listar pessoas");
+        Console.WriteLine("5 - Sair do programa");
+        int escolha = int.Parse(Console.ReadLine()!);
 
         switch (escolha)
         {
@@ -141,7 +143,7 @@ void menu() // Menu para escolher o que fazer
                 break;
         }
     }
-    catch (Exception.erro)
+    catch (Exception erro)
     {
         Console.WriteLine(erro.Message);
         Console.WriteLine("Erro! Retornando ao menu...");

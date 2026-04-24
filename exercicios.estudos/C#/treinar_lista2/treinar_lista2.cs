@@ -1,18 +1,22 @@
 ﻿// treinar lista 2 (e um pouco de POO)
-class MoldeProduto {
-    public string nome;
+class MoldeProduto
+{
+    public string? nome;
     public int quantidade;
     public float preco;
 }
-class Program {
+class Program
+{
 
-    static void Main(string[] args) {
+    static void Main(string[] args)
+    {
         menu();
     }
 
     static List<MoldeProduto> lista_compras = new List<MoldeProduto>();
 
-    static void adicionar_item() {
+    static void adicionar_item()
+    {
         MoldeProduto item = new MoldeProduto();
         Console.WriteLine("Digite o nome do produto: ");
         item.nome = Console.ReadLine()!;
@@ -27,9 +31,11 @@ class Program {
         menu();
     }
 
-    static void listar_item() {
+    static void listar_item()
+    {
         int i = 1;
-        foreach (MoldeProduto item in lista_compras) {
+        foreach (MoldeProduto item in lista_compras)
+        {
             Console.WriteLine($"Produto número {i}");
             Console.WriteLine("Nome: " + item.nome);
             Console.WriteLine("Quantidade: " + item.quantidade);
@@ -39,34 +45,48 @@ class Program {
         }
     }
 
-    static int selecionar_item() {
+    static int selecionar_item()
+    {
         listar_item();
         Console.WriteLine("Digite o número do item que deseja selecionar: ");
         int pos = int.Parse(Console.ReadLine()!) - 1;
         return pos;
     }
 
-    static void remover_item() {
-        int pos = selecionar_item();
-        lista_compras.RemoveAt(pos);
-        Console.WriteLine("Retornando ao menu...");
-        menu();
+    static void remover_item()
+    {
+        try
+        {
+            int pos = selecionar_item();
+            lista_compras.RemoveAt(pos);
+            Console.WriteLine("Retornando ao menu...");
+            menu();
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            Console.WriteLine("Número inválido: use um índice entre 1 e o total de itens na lista.");
+            menu();
+        }
     }
 
-    static void menu() {
+    static void menu()
+    {
         Console.WriteLine("--- MENU ---");
         Console.WriteLine("1 - Adicionar item ao carrinho");
         Console.WriteLine("2 - Remover item");
         Console.WriteLine("3 - Encerrar programa");
         int escolha = int.Parse(Console.ReadLine()!);
 
-        if (escolha == 1) {
+        if (escolha == 1)
+        {
             adicionar_item();
         }
-        else if (escolha == 2) {
+        else if (escolha == 2)
+        {
             remover_item();
         }
-        else {
+        else
+        {
             return;
         }
     }

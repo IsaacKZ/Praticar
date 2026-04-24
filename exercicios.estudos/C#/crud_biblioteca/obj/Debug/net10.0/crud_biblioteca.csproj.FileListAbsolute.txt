@@ -1,0 +1,15 @@
+c:\Users\isaac\Praticar\exercicios.estudos\C#\crud_biblioteca\obj\Debug\net10.0\crud_biblioteca.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\isaac\Praticar\exercicios.estudos\C#\crud_biblioteca\obj\Debug\net10.0\crud_biblioteca.AssemblyInfoInputs.cache
+c:\Users\isaac\Praticar\exercicios.estudos\C#\crud_biblioteca\obj\Debug\net10.0\crud_biblioteca.AssemblyInfo.cs
+c:\Users\isaac\Praticar\exercicios.estudos\C#\crud_biblioteca\obj\Debug\net10.0\crud_biblioteca.csproj.CoreCompileInputs.cache
+c:\Users\isaac\Praticar\exercicios.estudos\C#\crud_biblioteca\obj\Debug\net10.0\crud_biblioteca.sourcelink.json
+c:\Users\isaac\Praticar\exercicios.estudos\C#\crud_biblioteca\bin\Debug\net10.0\crud_biblioteca.exe
+c:\Users\isaac\Praticar\exercicios.estudos\C#\crud_biblioteca\bin\Debug\net10.0\crud_biblioteca.deps.json
+c:\Users\isaac\Praticar\exercicios.estudos\C#\crud_biblioteca\bin\Debug\net10.0\crud_biblioteca.runtimeconfig.json
+c:\Users\isaac\Praticar\exercicios.estudos\C#\crud_biblioteca\bin\Debug\net10.0\crud_biblioteca.dll
+c:\Users\isaac\Praticar\exercicios.estudos\C#\crud_biblioteca\bin\Debug\net10.0\crud_biblioteca.pdb
+c:\Users\isaac\Praticar\exercicios.estudos\C#\crud_biblioteca\obj\Debug\net10.0\crud_biblioteca.dll
+c:\Users\isaac\Praticar\exercicios.estudos\C#\crud_biblioteca\obj\Debug\net10.0\refint\crud_biblioteca.dll
+c:\Users\isaac\Praticar\exercicios.estudos\C#\crud_biblioteca\obj\Debug\net10.0\crud_biblioteca.pdb
+c:\Users\isaac\Praticar\exercicios.estudos\C#\crud_biblioteca\obj\Debug\net10.0\crud_biblioteca.genruntimeconfig.cache
+c:\Users\isaac\Praticar\exercicios.estudos\C#\crud_biblioteca\obj\Debug\net10.0\ref\crud_biblioteca.dll

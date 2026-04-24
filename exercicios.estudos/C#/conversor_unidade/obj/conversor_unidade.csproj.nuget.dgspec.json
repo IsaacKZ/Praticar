@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\conversor_unidade\\conversor_unidade.csproj": {}
+    "c:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\conversor_unidade\\conversor_unidade.csproj": {}
   },
   "projects": {
-    "C:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\conversor_unidade\\conversor_unidade.csproj": {
+    "c:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\conversor_unidade\\conversor_unidade.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\conversor_unidade\\conversor_unidade.csproj",
+        "projectUniqueName": "c:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\conversor_unidade\\conversor_unidade.csproj",
         "projectName": "conversor_unidade",
-        "projectPath": "C:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\conversor_unidade\\conversor_unidade.csproj",
+        "projectPath": "c:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\conversor_unidade\\conversor_unidade.csproj",
         "packagesPath": "C:\\Users\\isaac\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\conversor_unidade\\obj\\",
+        "outputPath": "c:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\conversor_unidade\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\isaac\\AppData\\Roaming\\NuGet\\NuGet.Config"

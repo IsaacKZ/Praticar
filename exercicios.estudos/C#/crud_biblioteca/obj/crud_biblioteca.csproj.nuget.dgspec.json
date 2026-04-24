@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\crud_biblioteca\\crud_biblioteca.csproj": {}
+    "c:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\crud_biblioteca\\crud_biblioteca.csproj": {}
   },
   "projects": {
-    "C:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\crud_biblioteca\\crud_biblioteca.csproj": {
+    "c:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\crud_biblioteca\\crud_biblioteca.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\crud_biblioteca\\crud_biblioteca.csproj",
+        "projectUniqueName": "c:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\crud_biblioteca\\crud_biblioteca.csproj",
         "projectName": "crud_biblioteca",
-        "projectPath": "C:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\crud_biblioteca\\crud_biblioteca.csproj",
+        "projectPath": "c:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\crud_biblioteca\\crud_biblioteca.csproj",
         "packagesPath": "C:\\Users\\isaac\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\crud_biblioteca\\obj\\",
+        "outputPath": "c:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\crud_biblioteca\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\isaac\\AppData\\Roaming\\NuGet\\NuGet.Config"

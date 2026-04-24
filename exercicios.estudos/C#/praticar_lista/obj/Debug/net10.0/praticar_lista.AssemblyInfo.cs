@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("praticar_lista")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2ae7aee129c1866d846727c6ce2d70e7e8ce72ee")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+94bbff50001874c3f5f9279efc816431608b80e0")]
 [assembly: System.Reflection.AssemblyProductAttribute("praticar_lista")]
 [assembly: System.Reflection.AssemblyTitleAttribute("praticar_lista")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

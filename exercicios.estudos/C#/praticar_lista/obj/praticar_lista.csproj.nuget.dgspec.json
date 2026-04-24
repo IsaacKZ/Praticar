@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\praticar_lista\\praticar_lista.csproj": {}
+    "c:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\praticar_lista\\praticar_lista.csproj": {}
   },
   "projects": {
-    "C:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\praticar_lista\\praticar_lista.csproj": {
+    "c:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\praticar_lista\\praticar_lista.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\praticar_lista\\praticar_lista.csproj",
+        "projectUniqueName": "c:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\praticar_lista\\praticar_lista.csproj",
         "projectName": "praticar_lista",
-        "projectPath": "C:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\praticar_lista\\praticar_lista.csproj",
+        "projectPath": "c:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\praticar_lista\\praticar_lista.csproj",
         "packagesPath": "C:\\Users\\isaac\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\praticar_lista\\obj\\",
+        "outputPath": "c:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\praticar_lista\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\isaac\\AppData\\Roaming\\NuGet\\NuGet.Config"

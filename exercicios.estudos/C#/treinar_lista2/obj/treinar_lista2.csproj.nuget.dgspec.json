@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\treinar_lista2\\treinar_lista2.csproj": {}
+    "c:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\treinar_lista2\\treinar_lista2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\treinar_lista2\\treinar_lista2.csproj": {
+    "c:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\treinar_lista2\\treinar_lista2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\treinar_lista2\\treinar_lista2.csproj",
+        "projectUniqueName": "c:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\treinar_lista2\\treinar_lista2.csproj",
         "projectName": "treinar_lista2",
-        "projectPath": "C:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\treinar_lista2\\treinar_lista2.csproj",
+        "projectPath": "c:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\treinar_lista2\\treinar_lista2.csproj",
         "packagesPath": "C:\\Users\\isaac\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\treinar_lista2\\obj\\",
+        "outputPath": "c:\\Users\\isaac\\Praticar\\exercicios.estudos\\C#\\treinar_lista2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\isaac\\AppData\\Roaming\\NuGet\\NuGet.Config"
