@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("treinar_lista3")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d7d74678197cfbf27faa84b4ce317b715735859f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4f1c4517b7b6bb0b4c50eeef919d6ce6a4d3953f")]
 [assembly: System.Reflection.AssemblyProductAttribute("treinar_lista3")]
 [assembly: System.Reflection.AssemblyTitleAttribute("treinar_lista3")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
